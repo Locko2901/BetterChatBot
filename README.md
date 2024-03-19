@@ -36,7 +36,7 @@ Upon cloning the repository, you will find the following structure:
         └── index.js
 ```
 
-## Simplified Setup Using Release
+## Simplified Setup Using the Install Script
 
 For users looking for a quicker setup experience, a new release now includes an `installer.sh` script. This script is part of the Basic Setup and automates the initial configuration and dependency installations, significantly cutting down the setup time and making the process more user-friendly. Please note that the Basic Setup does not include command setup.
 
