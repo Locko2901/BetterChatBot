@@ -155,6 +155,32 @@ nano config.json
 
 When you're done, save the file by pressing `ctrl + o`, confirm with `enter` and exit the editor by pressing `ctrl + x`.
 
+## (Optional but recommended) Personalizing Your Bot
+
+There are 2 ways in which you can personalize the bot: With the personalityPrompt you can define the bots behaviour/character. To modify it, open the index.js file of the ChatBot:
+
+```shell
+nano ChatBot/src/index.js
+```
+
+And look for this line of code:
+
+`let personalityPrompt = ...`
+
+It will be marked with `TODO`, as well as instructions.
+
+The targetContent defines the name that the bot listens to. To change it, open the `ìndex.js` file of the ExampleBot:
+
+```shell
+nano ExampleBot/src/index.js
+```
+
+And look for the following line of code:
+
+`const targetContent = 'ExampleBot';`
+
+It will also be marked as `TODO`.
+
 ## (Optional) Enabling Commands in ExampleBot
 
 To enable command handling, you need to uncomment specific sections within the `index.js` and `deploy-commands.js` files of ExampleBot. These sections are marked with `TODO` comments to indicate where modifications are necessary. I'll be using `nano` again as my code editor.
