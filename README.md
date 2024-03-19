@@ -57,7 +57,7 @@ I recommend having a server to thoroughly test your bot. Bugs are not uncommon a
 
 If you decide to create a dev-server, remember to copy and store your server id for later. You will need it in the `config.json`.
 
-To get it simply enable Developer Mode by going to `User Settings > Appearance > Advanced` and toggle on Developer Mode. Then right-click on the server name in the left sidebar and click on "Copy ID" to copy the server ID to your clipboard.
+To get it simply enable Developer Mode by going to `User Settings > App Settings > Advanced` and toggle on Developer Mode. Then right-click on the server name in the left sidebar and click on "Copy ID" to copy the server ID to your clipboard.
 
 ### Invite Bot to Your Server
 
