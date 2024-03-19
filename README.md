@@ -36,6 +36,60 @@ Upon cloning the repository, you will find the following structure:
         └── index.js
 ```
 
+## Pre Requisites
+
+### Discord Bot Account
+
+You will need to have a bot account on Discord through which your applications will interact with Discord servers. Follow the steps below to create one if needed:
+
+* Go to the [Discord Developer Portal](https://discord.com/developers/applications) and log in with your Discord account.
+* Click on the "New Application" button. Give your application a name and click "Create".
+* In the "General Information" tab copy the "Application ID" and save it somewhere for later.
+* Navigate to the "Bot" tab on the left sidebar and Customize your bot's username and profile picture according to your preference.
+* In the same tab turn off "Public Bot", leave "Requires OAuth2 Code Grant" deactivated, then activate "Presence Intent", "Server Members Intent" and "Message Content Intent".
+* Under the "TOKEN" section, click "Copy" to securely store your bot's token (you might have to reset it once); you will need this token and the app id for configuring your bot later in the `config.json` file.
+
+Remember to keep your bot token secure, as it gives full access to your bot to anyone who possesses it.
+
+### (Optional but recommended) Development Server
+
+I recommend having a server to thoroughly test your bot. Bugs are not uncommon after all. You might also need it to locally test and deploy commands.
+
+If you decide to create a dev-server, remember to copy and store your server id for later. You will need it in the `config.json`.
+
+To get it simply enable Developer Mode by going to User Settings > Appearance > Advanced and toggle on Developer Mode. Then right-click on the server name in the left sidebar and click on "Copy ID" to copy the server ID to your clipboard.
+
+### Invite Bot to Your Server
+
+Once your bot account is set up, you'll need to invite it to a Discord server for it to become operational. To do this, you can follow there steps:
+
+* In the Discord Developer Portal, go to your bot's application page.
+* Navigate to the "OAuth2" tab, then scroll down to the "URL Generator".
+* Under “Scopes”, tick the “bot” and the "applications.commands" checkbox.
+* Below, in “Bot Permissions”, select the permissions your bot requires to function as intended. For simplicity you can just select "Administrator".
+* Scroll down to the "Generated URL" and copy it.
+* Paste the copied URL into your web browser and select the server to which you want to add your bot.
+* Confirm your choice and the bot will be added to the server.
+
+## Acquire the API Keys
+
+To get your OpenAI API Key you can follow the steps below:
+
+* Visit [OpenAI's official platform website](https://platform.openai.com/api-keys) and create an account if you don't have one or log in to your OpenAI account using your email address and password or through Google/Microsoft accounts.
+* Navigate the tab that says "API keys".
+* Click on "Create New Secret Key" to generate a new API key.
+* Ensure to save the API key immediately as you won't be able to reopen the window once it closes.
+* New users receive $5 worth of credit for free, which expires after three months.
+* Enter billing details once the credit is used up or expired to continue using the API.
+
+To get your pplx-api key you can follow these steps:
+
+* Start by visiting the Perplexity API Settings page on the official [Perplexity website](https://www.perplexity.ai/settings) and creating an account.
+* Register your credit card, which is required to get started but will not be charged initially.
+* Ensure your balance is nonzero as API keys can only be generated when you have credits.
+
+Remember to store the keys as you will need them in the `config.json`.
+
 ## Initial Setup
 
 Open a terminal and navigate to the directory folder where you plan to store your files. If you don't have one yet you can create and enter it using the command below:
