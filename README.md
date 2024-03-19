@@ -36,6 +36,28 @@ Upon cloning the repository, you will find the following structure:
         └── index.js
 ```
 
+## Simplified Setup Using Release
+
+For users looking for a quicker setup experience, a new release now includes a `installer.sh` script. This script automates the initial configuration and dependency installations, significantly cutting down the setup time and making the process more user-friendly.
+
+### Using the Install Script
+
+1. Download the latest release from the [Releases page](https://github.com/Locko2901/BetterChatBot/releases) on GitHub. Ensure to download the `Setup.zip` asset.
+2. Extract the downloaded package to your desired location.
+3. Open a terminal and navigate to the `BetterChatBot` directory from the extracted files.
+4. Run the following commands to start the setup:
+
+```shell
+chmod +x installer.sh
+./installer.sh
+```
+
+5. Follow the on-screen instructions provided by the script.
+
+This script checks for Node.js, npm, and PM2 installations, configures your Discord bot account, sets up API keys, and much more—all from within a simplified, interactive command-line interface.
+
+## Manual Setup
+
 ## Pre-requisites
 
 ### Creating a Discord Bot Account
