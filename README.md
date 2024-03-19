@@ -159,7 +159,7 @@ When you're done, save the file by pressing `ctrl + o`, confirm with `enter` and
 
 ## (Optional but recommended) Personalizing Your Bot
 
-There are 2 ways in which you can personalize the bot: With the personalityPrompt you can define the bots behaviour/character. To modify it, open the index.js file of the ChatBot:
+There are 2 ways in which you can personalize the bot: With the personalityPrompt you can define the bots behaviour/character. To modify it, open the `index.js` file of the ChatBot:
 
 ```shell
 nano ChatBot/src/index.js
