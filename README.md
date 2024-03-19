@@ -101,7 +101,7 @@ nano config.json
 
 When you're done, save the file by pressing `ctrl + o`, confirm with `enter` and exit the editor by pressing `ctrl + x`.
 
-## Enabling Commands in ExampleBot
+## (Optional) Enabling Commands in ExampleBot
 
 To enable command handling, you need to uncomment specific sections within the `index.js` and `deploy-commands.js` files of ExampleBot. These sections are marked with `TODO` comments to indicate where modifications are necessary. I'll be using `nano` again as my code editor.
 
@@ -121,7 +121,7 @@ Then deploy the commands using:
 node ExampleBot/src/deploy-commands.js
 ```
 
-## (optional) Running Bots with PM2
+## (Optional) Running Bots with PM2
 
 To manage the bot with PM2, a powerful Node.js process manager, follow the instructions below:
 
