@@ -367,3 +367,30 @@ PM2 is a robust Node.js process manager to increase bot uptime:
    - Restart all applications: `pm2 restart all`
 
 These steps ensure your bot is properly set up, customized to your preference, and reliably running.
+
+## Deployment Recommendations
+
+This bot is designed to run on various server environments, including home servers, Raspberry Pi, cloud instances (such as droplets on DigitalOcean), or any similar platforms. This flexibility allows for an efficient use of resources and easy access from anywhere.
+
+## Communication Endpoints
+
+The bot utilizes the following communication endpoints for interacting with the server:
+
+- User Message Endpoint: `const serverUserMessageEndpoint = 'http://localhost:4000/userMessage';`
+- Assistant Response Endpoint: `const serverAssistantResponseEndpoint = 'http://localhost:4000/assistantResponse';`
+
+These endpoints are set to work with a local server setup by default. However, you can easily configure them to use more professional, domain-based endpoints for a production environment.
+
+### Attaching a Custom Domain (Optional)
+
+Attaching a custom domain to your server hosting the bot not only enhances the professionalism of your endpoints but also makes them more memorable. Here is a tiny guide to get you started with attaching a custom domain and setting up SSL:
+
+1. **Acquire a Domain**: Purchase a domain from a domain registrar of your choice.
+2. **Point Your Domain to Your Server**: Update the DNS records at your domain registrar to point to your server's IP address.
+3. **Set Up SSL for Secure Communication**:
+   - Install Certbot on your server (for Let's Encrypt free SSL certificates).
+   - Run `certbot --apache` or `certbot --nginx` depending on your server setup.
+   - Follow the interactive prompt to select your domain and finalize the SSL setup.
+   - Ensure your server is configured to redirect HTTP traffic to HTTPS.
+
+These steps are a starting foundation. Depending on your server setup and the specific requirements of your project, additional configuration may be necessary.
