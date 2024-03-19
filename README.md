@@ -296,7 +296,7 @@ Marked as `TODO`.
 
 ## Enabling Commands in ExampleBot (Optional)
 
-Enable command handling by uncommenting sections in `index.js` and `deploy-commands.js` and follow the guided instructions:
+Enable command handling by uncommenting sections in `index.js` and `deploy-commands.js` and follow the guided instructions after `// TODO`:
 
 ```shell
 nano ExampleBot/src/index.js
