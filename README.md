@@ -52,9 +52,6 @@ npm install
 
 cd ../ExampleBot
 npm install
-        │       └── imagine.js
-        ├── deploy-commands.js
-        └── index.js
 ```
 
 ### Step 3: Configure config.json
