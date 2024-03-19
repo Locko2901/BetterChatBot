@@ -73,7 +73,7 @@ Once your bot account is set up, you'll need to invite it to a Discord server fo
 
 ## Acquire the API Keys
 
-To get your OpenAI API Key you can follow the steps below:
+To get your OpenAI API key you can follow the steps below:
 
 * Visit [OpenAI's official platform website](https://platform.openai.com/api-keys) and create an account if you don't have one or log in to your OpenAI account using your email address and password or through Google/Microsoft accounts.
 * Navigate to the tab that says "API keys".
@@ -109,7 +109,7 @@ If you see the version numbers for both, you're good to go! If not, or if you ne
 
 ### Step 1: Clone the Repository
 
-Clone the repository.This will download all the files needed to start working with the bot.
+Clone the repository. This will download all the files needed to start working with the bot.
 
 ```shell
 git clone https://github.com/Locko2901/BetterChatBot
