@@ -122,7 +122,9 @@ Navigate to each bot directory (`ChatBot` and `ExampleBot`) and run `npm install
 ```shell
 cd ChatBot
 npm install
+```
 
+```shell
 cd ../ExampleBot
 npm install
 ```
