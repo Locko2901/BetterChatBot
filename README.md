@@ -43,60 +43,53 @@ For users looking for a quicker setup experience, a new release now includes an 
 ### Using the Install Script
 
 1. Download the latest release from the [Releases page](https://github.com/Locko2901/BetterChatBot/releases) on GitHub. Ensure to download the `Setup.zip` asset.
-2. Open a terminal.
-3. Navigate to the directory where you downloaded `Setup.zip`.
-    
-    ```shell
-   cd ~/Downloads
-   ```
-
-4. Extract the downloaded package to your desired location.
-
-   For Unix/Linux and macOS:
-
+2. If you are installing on a local machine, proceed to step 3. If you are installing on a remote device, follow these steps to transfer `Setup.zip`:
+   - Open a terminal.
+   - Use the `scp` command to securely copy the file to the remote device. Replace `your_username@remote_host` with the username and IP address (or hostname) of your remote device, and replace `/path/to/remote/directory` with the directory path on the remote device where you want to place the file:
+     ```shell
+     scp ~/Downloads/Setup.zip your_username@remote_host:/path/to/remote/directory
+     ```
+   - Log into your remote device via SSH:
+     ```shell
+     ssh your_username@remote_host
+     ```
+   - Proceed to step 3 after successfully logging into your remote device.
+3. Navigate to the directory where you downloaded or transferred `Setup.zip`:
    ```shell
-   unzip Setup.zip -d /path/to/extract/location
+   cd ~/Downloads  # Or the remote directory you transferred Setup.zip to
    ```
-
-   Replace `/path/to/extract/location` with the actual path where you wish to extract the files.
-   
-   For distributions where `unzip` might not be installed by default, you can usually install it via your package manager:
-
-   - On Debian/Ubuntu:
-     
+4. Extract the downloaded package to your desired location.
+   - For Unix/Linux and macOS:
      ```shell
-     sudo apt-get install unzip
+     unzip Setup.zip -d /path/to/extract/location
      ```
+   - Replace `/path/to/extract/location` with the actual path where you wish to extract the files.
    
-   - On Fedora/RedHat:
-     
-     ```shell
-     sudo dnf install unzip
-     ```
-
-   - On Arch Linux:
-     
-     ```shell
-     sudo pacman -S unzip
-     ```
+   - For distributions where `unzip` might not be installed by default, you can usually install it via your package manager:
+     - On Debian/Ubuntu:
+       ```shell
+       sudo apt-get install unzip
+       ```
+     - On Fedora/RedHat:
+       ```shell
+       sudo dnf install unzip
+       ```
+     - On Arch Linux:
+       ```shell
+       sudo pacman -S unzip
+       ```
+     - After installing `unzip`, use the first command to extract the package.
    
-   After installing `unzip`, use the first command to extract the package.
-
-   For users on graphical interfaces (such as GNOME, KDE, etc.), you can often right-click the `Setup.zip` file and select an option like "Extract Here" or "Extract to..." without needing to use the terminal.
-
+   - For users on graphical interfaces (such as GNOME, KDE, etc.), you can often right-click the `Setup.zip` file and select an option like "Extract Here" or "Extract to..." without needing to use the terminal.
 5. Navigate to the `BetterChatBot` directory within the extracted files.
-
    ```shell
    cd /path/to/extract/location/BetterChatBot
    ```
-
 6. Make the `installer.sh` script executable and run it:
-
    ```shell
    chmod +x installer.sh
    ./installer.sh
    ```
-
 7. Follow the on-screen instructions provided by the script.
 
 This script checks for Node.js, npm, and PM2 installations, configures your Discord bot account, sets up API keys, and much more—all from within a simplified, interactive command-line interface. Remember, the Basic Setup streamlines your initial setup process but does not cover command setup.
