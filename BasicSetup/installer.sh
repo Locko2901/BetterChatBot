@@ -77,7 +77,6 @@ To get a Perplexity API key:
 2. Enter your billing information (initial charges are not applied).
 3. Maintain a nonzero balance as API keys require credits for generation.
 
-
 EOF
 }
 
@@ -89,32 +88,14 @@ read -p "Perplexity API Key: " perplexitykey
 
 read -p "Press enter to continue after completing these steps."
 
-echo "Checking for Node.js, npm, Git, and PM2 installation..."
+echo "Checking for Node.js, npm, and PM2 installation..."
 install_if_missing node "curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -; sudo apt-get install -y nodejs"
-install_if_missing git "sudo apt-get update; sudo apt-get install -y git"
 install_if_missing pm2 "sudo npm install pm2@latest -g"
-
-echo "Step 3: Cloning the BetterChatBot repository and setting up your bot..."
-git clone https://github.com/Locko2901/BetterChatBot
-cd BetterChatBot
-
-# Function to navigate directories and install dependencies
-function setup_directory {
-  echo "Installing dependencies for $1 directory..."
-  cd $1
-  npm install
-  echo "Dependencies for $1 installed."
-  cd ..
-}
-
-# Installing dependencies for required directories
-setup_directory "ChatBot"
-setup_directory "ExampleBot"
 
 read -p "Enter chatbot name: " botname
 read -p "About your bot (default: 'You love to chat and learn new things!'): " botaboutyou
 botaboutyou=${botaboutyou:-"You love to chat and learn new things!"}  
-read -p "About the creator (optional, e.g., 'Created by Lockoo, an Ai enthusiast.'): " botaboutcreator
+read -p "About the creator (optional, e.g., 'Created by Lockoo, an AI enthusiast.'): " botaboutcreator
 
 echo "Configuring the config.json file..."
 cat > config.json <<EOT
