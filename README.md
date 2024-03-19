@@ -105,7 +105,75 @@ node -v
 npm -v
 ```
 
-If you see the version numbers for both, you're good to go! If not, or if you need to install them, head over to [Node.js's official website](https://nodejs.org/en/download/) and grab the latest LTS installer, which includes `npm`. After installation, run the above commands again to verify.
+If you see the version numbers for both, you're good to go! If not, or if you need to install them, head over to [Node.js's official website](https://nodejs.org/en/download/) and grab the latest LTS installer, which includes `npm`.
+
+Alternatively you can install it via the command-line:
+
+#### For Ubuntu/Debian and derivatives:
+
+Using NodeSource:
+
+```shell
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+ #### For CentOS/RHEL/Fedora:
+
+Using NodeSource:
+```shell
+curl -fsSL https://rpm.nodesource.com/setup_lts.x | sudo bash -
+sudo yum install -y nodejs
+```
+
+On newer Fedora versions, you might need to use `dnf` instead of `yum`:
+
+```shell
+sudo dnf install -y nodejs
+```
+
+#### For Arch Linux:
+
+Node.js is available in the official package repository:
+
+```shell
+sudo pacman -S nodejs npm
+```
+
+#### For SUSE/openSUSE:
+
+Using NodeSource:
+
+```shell
+curl -fsSL https://rpm.nodesource.com/setup_lts.x | sudo bash -
+sudo zypper install -y nodejs
+```
+
+#### Using nvm (Node Version Manager):
+
+nvm allows you to manage multiple active Node.js versions. This method works across different distributions but requires you to install `nvm` first:
+
+Install nvm:
+
+```shell
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+```
+
+After installing, you might need to restart your terminal or source your profile to start using nvm (`source ~/.bashrc`, `source ~/.zshrc`, etc., depending on your shell).
+
+Then, install the latest LTS version of Node.js using nvm:
+
+```shell
+nvm install --lts
+```
+
+General Notes:
+
+* Replace `curl` with `wget` if `curl` is not installed on your system: you can generally substitute `curl -O` with `wget`.
+* For `nvm`, remember to check the [nvm GitHub repo](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) for the latest installation instructions or if you encounter any issues during the installation process.
+* Depending on your Linux distribution, you may need to prepend `sudo` to some commands to execute them with superuser privileges, especially when using global system directories.
+
+After installation, run the above commands again to verify.
 
 ### Step 1: Clone the Repository
 
