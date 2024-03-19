@@ -92,6 +92,16 @@ echo "Checking for Node.js, npm, and PM2 installation..."
 install_if_missing node "curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -; sudo apt-get install -y nodejs"
 install_if_missing pm2 "sudo npm install pm2@latest -g"
 
+echo "Installing Node.js dependencies for ChatBot..."
+cd ChatBot/
+npm install
+
+echo "Installing Node.js dependencies for ExampleBot..."
+cd ../ExampleBot/
+npm install
+
+cd ../
+
 read -p "Enter chatbot name: " botname
 read -p "About your bot (default: 'You love to chat and learn new things!'): " botaboutyou
 botaboutyou=${botaboutyou:-"You love to chat and learn new things!"}  
