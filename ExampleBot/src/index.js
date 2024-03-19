@@ -18,7 +18,7 @@ const serverAssistantResponseEndpoint = 'http://localhost:4000/assistantResponse
 
 const eventEmitter = new EventEmitter();
 
-// Un-comment for command usage
+// TODO: Un-comment for command usage
 /*client.commands = new Collection();
 const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
@@ -44,7 +44,7 @@ client.on('ready', () => {
     console.log(`${client.user.tag} is online.`);
 });
 
-// Un-comment for command usage
+// TODO: Un-comment for command usage
 /*client.on(Events.InteractionCreate, async interaction => {
     if (!interaction.isChatInputCommand()) return;
 
