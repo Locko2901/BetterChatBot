@@ -102,7 +102,7 @@ mkdir AIProjects && cd AIProjects
 
 ### Install/Check Node.js and npm
 
-Also, make sure you have `Node.js` and `npm` installed on your computer. These are essential for running and managing the dependencies of the bot. You can check if they're installed and their version by running:
+Make sure you have `Node.js` and `npm` installed on your computer. These are essential for running and managing the dependencies of the bot. You can check if they're installed and their version by running:
 
 ```shell
 node -v
