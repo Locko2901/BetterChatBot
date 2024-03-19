@@ -214,10 +214,13 @@ Verify Git's installation by rerunning the version check command.
 
 ### Step 1: Clone the Repository
 
-Begin by cloning the repository to download all necessary files:
+Begin by cloning the repository to download all necessary files and remove the `BasicSetup` directory as you won't be needing it:
 
 ```shell
 git clone https://github.com/Locko2901/BetterChatBot
+```
+```shell
+rm -rf BetterChatBot/BasicSetup
 ```
 
 ### Step 2: Install Dependencies
