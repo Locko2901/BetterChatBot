@@ -262,6 +262,6 @@ PM2 ensures your bots auto-restart in case of a crash, offering higher uptime an
 
 ***
 
-Your bots should now be correctly set up and running. ^^
+Your bot should now be correctly set up and running. ^^
 
 
