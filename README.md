@@ -403,11 +403,9 @@ PM2 is a robust Node.js process manager to increase bot uptime:
      apps : [{
        name: 'ChatBot',
        script: './ChatBot/src/index.js',
-       watch: true,
      }, {
        name: 'ExampleBot',
        script: './ExampleBot/src/index.js',
-       watch: true,
      }]
    };
    ```
