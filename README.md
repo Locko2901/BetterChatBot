@@ -38,7 +38,7 @@ Upon cloning the repository, you will find the following structure:
 
 ## Simplified Setup Using Release
 
-For users looking for a quicker setup experience, a new release now includes an `installer.sh` script. This script is part of our Basic Setup and automates the initial configuration and dependency installations, significantly cutting down the setup time and making the process more user-friendly. Please note that the Basic Setup does not include command setup.
+For users looking for a quicker setup experience, a new release now includes an `installer.sh` script. This script is part of the Basic Setup and automates the initial configuration and dependency installations, significantly cutting down the setup time and making the process more user-friendly. Please note that the Basic Setup does not include command setup.
 
 ### Using the Install Script
 
@@ -49,7 +49,7 @@ For users looking for a quicker setup experience, a new release now includes an 
     ```shell
    cd ~/Downloads
    ```
-   
+
 4. Extract the downloaded package to your desired location.
 
    For Unix/Linux and macOS:
