@@ -10,6 +10,7 @@ This guide provides detailed instructions for setting up and running my bot. I w
 ## Project Structure
 
 Upon cloning the repository, you will find the following structure:
+
 ```shell
 .
 ├── ChatBot
@@ -101,153 +102,119 @@ mkdir AIProjects && cd AIProjects
 
 ### Install/Check Node.js and npm
 
-Make sure you have `Node.js` and `npm` installed on your computer. These are essential for running and managing the dependencies of the bot. You can check if they're installed and their version by running:
+Ensure `Node.js` and `npm` are installed on your computer, as they are vital for running and managing the bot's dependencies. You can verify their installation and check their versions with the following commands:
 
 ```shell
 node -v
 npm -v
 ```
 
-If you see the version numbers for both, you're good to go! If not, or if you need to install them, head over to [Node.js's official website](https://nodejs.org/en/download/) and grab the latest LTS installer, which includes `npm`.
+If version numbers are displayed for both, your setup is complete. If not, or if you need to install them, visit [Node.js's official website](https://nodejs.org/en/download/) to download the latest LTS installer, which includes `npm`.
 
-#### Alternatively you can install it via the command-line:
+#### Alternative Installation Methods:
 
-#### For Ubuntu/Debian and derivatives:
+- **Ubuntu/Debian and Derivatives**:
+  Install using NodeSource:
+  ```shell
+  curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+  sudo apt-get install -y nodejs
+  ```
 
-Using NodeSource:
+- **CentOS/RHEL/Fedora**:
+  Install using NodeSource:
+  For CentOS/RHEL:
+  ```shell
+  curl -fsSL https://rpm.nodesource.com/setup_lts.x | sudo bash -
+  sudo yum install -y nodejs
+  ```
+  For newer Fedora versions, use `dnf`:
+  ```shell
+  sudo dnf install -y nodejs
+  ```
 
-```shell
-curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-sudo apt-get install -y nodejs
-```
+- **Arch Linux**:
+  Install from the official package repository:
+  ```shell
+  sudo pacman -S nodejs npm
+  ```
 
- #### For CentOS/RHEL/Fedora:
+- **SUSE/openSUSE**:
+  Install using NodeSource:
+  ```shell
+  curl -fsSL https://rpm.nodesource.com/setup_lts.x | sudo bash -
+  sudo zypper install -y nodejs
+  ```
 
-Using NodeSource:
-```shell
-curl -fsSL https://rpm.nodesource.com/setup_lts.x | sudo bash -
-sudo yum install -y nodejs
-```
+- **Using nvm (Node Version Manager)**:
+  To manage multiple Node.js versions, install `nvm`:
+  ```shell
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+  ```
+  After installation, you may need to restart your terminal or source your profile. Install the latest LTS version of Node.js with:
+  ```shell
+  nvm install --lts
+  ```
 
-On newer Fedora versions, you might need to use `dnf` instead of `yum`:
+**General Notes for Node.js Installation**:
+- If `curl` is unavailable, substitute `curl -O` with `wget`.
+- Refer to the [nvm GitHub repo](https://github.com/nvm-sh/nvm?tab=readme-overview) for updated installation instructions or troubleshooting tips.
+- Some commands may require `sudo` for execution due to permission requirements.
 
-```shell
-sudo dnf install -y nodejs
-```
-
-#### For Arch Linux:
-
-Node.js is available in the official package repository:
-
-```shell
-sudo pacman -S nodejs npm
-```
-
-#### For SUSE/openSUSE:
-
-Using NodeSource:
-
-```shell
-curl -fsSL https://rpm.nodesource.com/setup_lts.x | sudo bash -
-sudo zypper install -y nodejs
-```
-
-#### Using nvm (Node Version Manager):
-
-nvm allows you to manage multiple active Node.js versions. This method works across different distributions but requires you to install `nvm` first:
-
-Install nvm:
-
-```shell
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-```
-
-After installing, you might need to restart your terminal or source your profile to start using nvm (`source ~/.bashrc`, `source ~/.zshrc`, etc., depending on your shell).
-
-Then, install the latest LTS version of Node.js using nvm:
-
-```shell
-nvm install --lts
-```
-
-General Notes:
-
-* Replace `curl` with `wget` if `curl` is not installed on your system: you can generally substitute `curl -O` with `wget`.
-* For `nvm`, remember to check the [nvm GitHub repo](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) for the latest installation instructions or if you encounter any issues during the installation process.
-* Depending on your Linux distribution, you may need to prepend `sudo` to some commands to execute them with superuser privileges, especially when using global system directories.
-
-After installation, run the above commands again to verify.
+Verify the installation by running the version check commands again.
 
 ### Install/Check Git
 
-Ensure you have `Git` installed on your computer. You can verify its installation and check the installed version by running:
+Ensure `Git` is installed on your machine. Its installation and version can be confirmed by running:
 
 ```shell
 git --version
 ```
 
-If you see the version number, Git is correctly installed! Otherwise, or if you wish to install or upgrade it, head over to [Git's official website](https://git-scm.com/downloads) and grab the latest source release.
+A displayed version number indicates a successful installation. To install or upgrade, visit [Git's official website](https://git-scm.com/downloads) for the latest release.
 
-#### Alternatively you can install Git via the command-line:
+#### Alternative Installation Methods:
 
-#### For Ubuntu/Debian and derivatives:
+- **Ubuntu/Debian and Derivatives**:
+  ```shell
+  sudo apt-get update
+  sudo apt-get install git
+  ```
 
-```shell
-sudo apt-get update
-sudo apt-get install git
-```
+- **CentOS/RHEL 7 and Earlier** / **Fedora (legacy)**:
+  ```shell
+  sudo yum install git
+  ```
 
-#### For CentOS/RHEL 7 and earlier versions:
+- **CentOS/RHEL 8** and **Fedora**:
+  Use `dnf` for these distributions:
+  ```shell
+  sudo dnf install git
+  ```
+  
+- **Arch Linux**:
+  Install from the official repository:
+  ```shell
+  sudo pacman -S git
+  ```
 
-```shell
-sudo yum install git
-```
+- **openSUSE**:
+  ```shel
+  sudo zypper install git
+  ```
 
-#### For CentOS/RHEL 8 and Fedora:
+#### Configuring Git:
 
-CentOS/RHEL 8 and Fedora use `dnf`:
-
-```shell
-sudo dnf install git
-```
-
-Older Fedora versions might still use `yum`:
-
-```shell
-sudo yum install git
-```
-
-#### For Arch Linux:
-
-Git can be installed from the official package repository using:
-
-```shell
-sudo pacman -S git
-```
-
-#### For openSUSE:
-
-```shel
-sudo zypper install git
-```
-
-#### Configuring Git (Optional but Recommended)
-
-After installing, it's a good practice to configure your global username and email which are used in your commits:
-
+Configuring your global username and email for commits is advised:
 ```shell
 git config --global user.name "Your Name"
 git config --global user.email "youremail@example.com"
 ```
 
-This step identifies you as the author of your commits across all Git projects.
+**General Notes for Git Installation**:
+- Update your package manager before installation to ensure you're getting the latest version of Git.
+- For comprehensive documentation or troubleshooting, refer to the [official Git documentation](https://git-scm.com/doc).
 
-#### General Notes:
-
-* Ensure your package manager (`apt-get`, `yum`, `dnf`, `pacman`, `zypper`) is updated before installing Git. This guarantees you're downloading the latest version available in your distribution's repository.
-* For detailed documentation on Git or if you encounter any specific issues, refer to the [official Git documentation](https://git-scm.com/doc).
-
-Run the `git --version` command again after installation to verify Git is properly installed and to check the installed version.
+Verify Git's installation by rerunning the version check command.
 
 ### Step 1: Clone the Repository
 
