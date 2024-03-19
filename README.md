@@ -93,7 +93,7 @@ In the main project directory, create an `ecosystem.config.js` file with the fol
 module.exports = {
   apps : [{
     name: 'ChatBot',
-    script: './ChatBot/src/discordBot.js',
+    script: './ChatBot/src/index.js',
     watch: true,
   }, {
     name: 'ExampleBot',
