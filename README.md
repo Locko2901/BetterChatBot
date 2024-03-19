@@ -13,7 +13,6 @@ Upon cloning the repository, you will find the following structure:
 ```shell
 .
 ├── ChatBot
-│   ├── conversation_history.json
 │   ├── package.json
 │   ├── package-lock.json
 │   └── src
