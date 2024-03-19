@@ -92,11 +92,15 @@ Remember to store the keys as you will need them in the `config.json`.
 
 ## Initial Setup
 
+### Setting up Your Files
+
 Open a terminal and navigate to the directory folder where you plan to store your files. If you don't have one yet you can create and enter it using the command below:
 
 ```shell
 mkdir AIProjects && cd AIProjects
 ```
+
+### Install/Check Node.js and npm
 
 Also, make sure you have `Node.js` and `npm` installed on your computer. These are essential for running and managing the dependencies of the bot. You can check if they're installed and their version by running:
 
@@ -107,7 +111,7 @@ npm -v
 
 If you see the version numbers for both, you're good to go! If not, or if you need to install them, head over to [Node.js's official website](https://nodejs.org/en/download/) and grab the latest LTS installer, which includes `npm`.
 
-Alternatively you can install it via the command-line:
+#### Alternatively you can install it via the command-line:
 
 #### For Ubuntu/Debian and derivatives:
 
