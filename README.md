@@ -5,7 +5,7 @@ A revised version of my ChatBot, integrating the capabilities of the GPT-4-Turbo
 
 ## Project Overview
 
-This guide provides detailed instructions for setting up and running the ExampleBot and ChatBot. These bots, designed to work together, offer a rich interactive environment within Discord.
+This guide provides detailed instructions for setting up and running the ExampleBot and ChatBot.
 
 ## Project Structure
 
@@ -56,7 +56,17 @@ npm install
 
 ### Step 3: Configure config.json
 
-Properly fill out the `config.json` located in the main project directory as follows:
+Navigate back into your main project directory:
+
+```shell
+cd ../
+```
+
+Properly fill out the `config.json` located there using your code editor of your choice. I'll be using `nano` as my code editor in this example:
+
+```shell
+nano config.json
+```
 
 ```shell
 {
@@ -70,14 +80,26 @@ Properly fill out the `config.json` located in the main project directory as fol
 }
 ```
 
-Replace placeholders with your actual data.
+When you're done, save the file by pressing `ctrl + o`, confirm with `enter` and exit the editor by pressing `ctrl + x`.
 
 ## Enabling Commands in ExampleBot
 
-Uncomment specific sections within the `index.js` and `deploy-commands.js` file (marked as `TODO`)of ExampleBot to enable command handling. Deploy the commands using:
+To enable command handling, you need to uncomment specific sections within the `index.js` and `deploy-commands.js` files of ExampleBot. These sections are marked with `TODO` comments to indicate where modifications are necessary. I'll be using `nano` again as my code editor.
 
 ```shell
-node src/deploy-commands.js
+nano ExampleBot/src/index.js
+```
+
+```shell
+nano ExampleBot/src/deploy-commands.js
+```
+
+Once done, save and exit as described before.
+
+Then deploy the commands using:
+
+```shell
+node ExampleBot/src/deploy-commands.js
 ```
 
 ## Running Bots with PM2
@@ -86,7 +108,13 @@ To manage your bots with PM2, a powerful Node.js process manager, follow the ins
 
 ### 1. Creating ecosystem.config.js
 
-In the main project directory, create an `ecosystem.config.js` file with the following example content:
+In the main project directory, create an `ecosystem.config.js` file:
+
+```shell
+nano ecosystem.config.js
+```
+
+And paste in the following lines of code:
 
 ```shell
 // Adjust as needed
@@ -103,6 +131,8 @@ module.exports = {
 };
 ```
 
+Don't forget to save and exit. ;)
+
 ### 2. Install PM2
 
 If not already installed, install PM2 globally using npm:
@@ -113,13 +143,14 @@ npm install pm2 -g
 
 ### 3. Start the Bots
 
-Navigate to the main project directory (where your `ecosystem.config.js` file is located) and start your bots:
+Now all that is left to do is start the Bot by running the following command:
 
 ```shell
 pm2 start ecosystem.config.js
 ```
 
 ### 4. Monitor and Manage Processes
+
 * List all running processes: `pm2 ls`
 * Monitor logs and application information: `pm2 monit`
 * View logs in real-time: `pm2 logs`
@@ -128,6 +159,8 @@ pm2 start ecosystem.config.js
 
 PM2 ensures your bots auto-restart in case of a crash, offering higher uptime and reliability.
 
-Your bots should now be correctly set up and running. This comprehensive guide should assist you in managing your bots efficiently. Happy developing!
+***
+
+Your bots should now be correctly set up and running. ^^
 
 
