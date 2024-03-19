@@ -38,23 +38,68 @@ Upon cloning the repository, you will find the following structure:
 
 ## Simplified Setup Using Release
 
-For users looking for a quicker setup experience, a new release now includes a `installer.sh` script. This script automates the initial configuration and dependency installations, significantly cutting down the setup time and making the process more user-friendly.
+For users looking for a quicker setup experience, a new release now includes an `installer.sh` script. This script is part of our Basic Setup and automates the initial configuration and dependency installations, significantly cutting down the setup time and making the process more user-friendly. Please note that the Basic Setup does not include command setup.
 
 ### Using the Install Script
 
 1. Download the latest release from the [Releases page](https://github.com/Locko2901/BetterChatBot/releases) on GitHub. Ensure to download the `Setup.zip` asset.
-2. Extract the downloaded package to your desired location.
-3. Open a terminal and navigate to the `BetterChatBot` directory from the extracted files.
-4. Run the following commands to start the setup:
+2. Open a terminal.
+3. Navigate to the directory where you downloaded `Setup.zip`.
+    
+    ```shell
+   cd ~/Downloads
+   ```
+   
+4. Extract the downloaded package to your desired location.
 
-```shell
-chmod +x installer.sh
-./installer.sh
-```
+   For Unix/Linux and macOS:
 
-5. Follow the on-screen instructions provided by the script.
+   ```shell
+   unzip Setup.zip -d /path/to/extract/location
+   ```
 
-This script checks for Node.js, npm, and PM2 installations, configures your Discord bot account, sets up API keys, and much more—all from within a simplified, interactive command-line interface.
+   Replace `/path/to/extract/location` with the actual path where you wish to extract the files.
+   
+   For distributions where `unzip` might not be installed by default, you can usually install it via your package manager:
+
+   - On Debian/Ubuntu:
+     
+     ```shell
+     sudo apt-get install unzip
+     ```
+   
+   - On Fedora/RedHat:
+     
+     ```shell
+     sudo dnf install unzip
+     ```
+
+   - On Arch Linux:
+     
+     ```shell
+     sudo pacman -S unzip
+     ```
+   
+   After installing `unzip`, use the first command to extract the package.
+
+   For users on graphical interfaces (such as GNOME, KDE, etc.), you can often right-click the `Setup.zip` file and select an option like "Extract Here" or "Extract to..." without needing to use the terminal.
+
+5. Navigate to the `BetterChatBot` directory within the extracted files.
+
+   ```shell
+   cd /path/to/extract/location/BetterChatBot
+   ```
+
+6. Make the `installer.sh` script executable and run it:
+
+   ```shell
+   chmod +x installer.sh
+   ./installer.sh
+   ```
+
+7. Follow the on-screen instructions provided by the script.
+
+This script checks for Node.js, npm, and PM2 installations, configures your Discord bot account, sets up API keys, and much more—all from within a simplified, interactive command-line interface. Remember, the Basic Setup streamlines your initial setup process but does not cover command setup.
 
 ## Manual Setup
 
