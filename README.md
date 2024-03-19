@@ -170,7 +170,7 @@ And look for this line of code:
 
 It will be marked with `TODO`, as well as instructions.
 
-The `targetContent` defines the name that the bot listens to. To change it, open the `ìndex.js` file of the ExampleBot:
+The `targetContent` defines the name that the bot listens to. To change it, open the `index.js` file of the ExampleBot:
 
 ```shell
 nano ExampleBot/src/index.js
