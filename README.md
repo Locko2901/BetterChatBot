@@ -179,6 +179,76 @@ General Notes:
 
 After installation, run the above commands again to verify.
 
+### Instal/Check Git
+
+Ensure you have `Git` installed on your computer. You can verify its installation and check the installed version by running:
+
+```shell
+git --version
+```
+
+If you see the version number, Git is correctly installed! Otherwise, or if you wish to install or upgrade it, here are the command-line instructions:
+
+#### For Ubuntu/Debian and derivatives:
+
+```shell
+sudo apt-get update
+sudo apt-get install git
+```
+
+#### For CentOS/RHEL 7 and earlier versions:
+
+```shell
+sudo yum install git
+```
+
+#### For CentOS/RHEL 8 and Fedora:
+
+CentOS/RHEL 8 and Fedora use `dnf`:
+
+```shell
+sudo dnf install git
+```
+
+Older Fedora versions might still use `yum`:
+
+```shell
+sudo yum install git
+```
+
+#### For Arch Linux:
+
+Git can be installed from the official package repository using:
+
+```shell
+sudo pacman -S git
+```
+
+#### For openSUSE:
+
+```shel
+sudo zypper install git
+```
+
+#### Configuring Git (Optional but Recommended)
+
+After installing, it's a good practice to configure your global username and email which are used in your commits:
+
+```shell
+git config --global user.name "Your Name"
+git config --global user.email "youremail@example.com"
+```
+
+This step identifies you as the author of your commits across all Git projects.
+
+#### General Notes:
+
+* Ensure your package manager (`apt-get`, `yum`, `dnf`, `pacman`, `zypper`) is updated before installing Git. This guarantees you're downloading the latest version available in your distribution's repository.
+* For detailed documentation on Git or if you encounter any specific issues, refer to the [official Git documentation](https://git-scm.com/doc).
+* If you're using a distribution not listed here or need a specific version of Git not available in your distro's repository, consider compiling Git from source. This involves downloading the latest source code from the [Git website](https://git-scm.com/) and following their compilation instructions.
+
+Run the `git --version` command again after installation to verify Git is properly installed and to check the installed version.
+
 ### Step 1: Clone the Repository
 
 Clone the repository. This will download all the files needed to start working with the bot.
