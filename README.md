@@ -178,7 +178,7 @@ General Notes:
 
 After installation, run the above commands again to verify.
 
-### Instal/Check Git
+### Install/Check Git
 
 Ensure you have `Git` installed on your computer. You can verify its installation and check the installed version by running:
 
@@ -186,7 +186,9 @@ Ensure you have `Git` installed on your computer. You can verify its installatio
 git --version
 ```
 
-If you see the version number, Git is correctly installed! Otherwise, or if you wish to install or upgrade it, here are the command-line instructions:
+If you see the version number, Git is correctly installed! Otherwise, or if you wish to install or upgrade it, head over to [Git's official website](https://git-scm.com/downloads) and grab the latest source release.
+
+#### Alternatively you can install Git via the command-line:
 
 #### For Ubuntu/Debian and derivatives:
 
@@ -244,7 +246,6 @@ This step identifies you as the author of your commits across all Git projects.
 
 * Ensure your package manager (`apt-get`, `yum`, `dnf`, `pacman`, `zypper`) is updated before installing Git. This guarantees you're downloading the latest version available in your distribution's repository.
 * For detailed documentation on Git or if you encounter any specific issues, refer to the [official Git documentation](https://git-scm.com/doc).
-* If you're using a distribution not listed here or need a specific version of Git not available in your distro's repository, consider compiling Git from source. This involves downloading the latest source code from the [Git website](https://git-scm.com/) and following their compilation instructions.
 
 Run the `git --version` command again after installation to verify Git is properly installed and to check the installed version.
 
