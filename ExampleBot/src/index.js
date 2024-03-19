@@ -1,0 +1,189 @@
+const { Client, GatewayIntentBits } = require('discord.js');
+const axios = require('axios');
+const EventEmitter = require('events');
+const evaluateMessageForWebSearch = require('../../ChatBot/src/evaluateMessageForWebSearch');
+const { token } = require('../../config.json'); 
+
+const client = new Client({
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMembers,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
+    ],
+});
+
+const serverUserMessageEndpoint = 'http://localhost:4000/userMessage'; 
+const serverAssistantResponseEndpoint = 'http://localhost:4000/assistantResponse'; 
+
+const eventEmitter = new EventEmitter();
+
+// Un-comment for command usage
+/*client.commands = new Collection();
+const foldersPath = path.join(__dirname, 'commands');
+const commandFolders = fs.readdirSync(foldersPath);
+
+for (const folder of commandFolders) {
+    const commandsPath = path.join(foldersPath, folder);
+    const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+    for (const file of commandFiles) {
+        const filePath = path.join(commandsPath, file);
+        const command = require(filePath);
+        if ('data' in command && 'execute' in command) {
+            client.commands.set(command.data.name, command);
+        } else {
+            console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
+        }
+    }
+}*/
+
+const messageQueue = [];
+let isProcessing = false;
+
+client.on('ready', () => {
+    console.log(`${client.user.tag} is online.`);
+});
+
+// Un-comment for command usage
+/*client.on(Events.InteractionCreate, async interaction => {
+    if (!interaction.isChatInputCommand()) return;
+
+    const command = client.commands.get(interaction.commandName);
+
+    if (!command) return;
+
+    try {
+        await command.execute(interaction);
+    } catch (error) {
+        console.error(error);
+        if (interaction.replied || interaction.deferred) {
+            await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
+        } else {
+            await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+        }
+    }
+});*/
+
+client.on('messageCreate', async (message) => {
+    if (message.author.bot) {
+        return;
+    }
+
+    const targetContent = 'ExampleBot'; // Replace with your bot's name
+    const lowerCaseMessage = message.content.toLowerCase();
+
+    if (lowerCaseMessage.includes(targetContent.toLowerCase()) || message.mentions.has(client.user)) {
+        if (message.mentions.everyone || message.mentions.here) {
+            return;
+        }
+
+        const messageContent = `${message.author.username}:${message.content}`;
+
+        const data = {
+            userQuery: messageContent,
+            server: message.guild.name, 
+        };
+
+        messageQueue.push({ message, data });
+
+        if (!isProcessing) {
+            processNextMessage();
+        }
+    }
+});
+
+async function processNextMessage() {
+    if (messageQueue.length > 0) {
+        isProcessing = true;
+        const { message, data } = messageQueue.shift();
+
+        message.channel.sendTyping();
+
+        let preliminaryMessage = null; 
+
+        const needsWebSearch = await evaluateMessageForWebSearch(data.userQuery);
+
+        if (needsWebSearch) {
+            preliminaryMessage = await message.channel.send("Invoking web search...");
+        }
+
+        try {
+            const response = await axios.post(serverUserMessageEndpoint, data);
+            const serverResponses = response.data.chatbotResponse;
+            console.log('Server Responses:', serverResponses);
+
+            if (preliminaryMessage) {
+                await preliminaryMessage.delete().catch(error => {
+                    if (error.code === 10008) {
+                        console.warn('Attempted to delete an unknown message. It might have been already deleted.');
+                    } else {
+                        throw error; 
+                    }
+                });
+            }
+
+            for (const serverResponse of serverResponses) {
+                if (serverResponse.trim() !== '') {
+                    const responseParts = splitLongMessage(serverResponse);
+                    for (const part of responseParts) {
+                        await message.channel.send(part);
+                    }
+                }
+            }
+        } catch (error) {
+            console.error('Error sending/receiving messages:', error.message);
+            await message.channel.send('An error occurred while communicating with the server.');
+        } finally {
+            isProcessing = false;
+            processNextMessage();
+        }
+    }
+}
+
+eventEmitter.on('botResponse', async (responseData) => {
+    const responseBatch = responseData.responseBatch;
+
+    try {
+        const responseParts = splitLongMessage(responseBatch);
+        for (const part of responseParts) {
+            await responseData.message.reply(part);
+        }
+    } catch (error) {
+        console.error('Error sending message:', error.message);
+    }
+});
+
+function splitLongMessage(message) {
+    const maxLength = 1000;
+    const parts = [];
+
+    const sentences = message.split('. '); 
+    let currentPart = '';
+
+    for (const sentence of sentences) {
+        if (sentence.length > maxLength) {
+            const splitSentence = sentence.match(/.{1,1000}(\s|$)|\S+?(\s|$)/g) || [];
+            for (const part of splitSentence) {
+                if (currentPart.length + part.length <= maxLength) {
+                    currentPart += part;
+                } else {
+                    if (currentPart !== '') parts.push(currentPart);
+                    currentPart = part;
+                }
+            }
+        } else if (currentPart.length + sentence.length + 2 <= maxLength) {
+            currentPart += (currentPart !== '' ? '. ' : '') + sentence;
+        } else {
+            parts.push(currentPart);
+            currentPart = sentence;
+        }
+    }
+
+    if (currentPart !== '') {
+        parts.push(currentPart);
+    }
+
+    return parts;
+}
+
+client.login(token); 
