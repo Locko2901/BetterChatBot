@@ -121,7 +121,7 @@ Then deploy the commands using:
 node ExampleBot/src/deploy-commands.js
 ```
 
-## Running Bots with PM2
+## (optional) Running Bots with PM2
 
 To manage the bot with PM2, a powerful Node.js process manager, follow the instructions below:
 
