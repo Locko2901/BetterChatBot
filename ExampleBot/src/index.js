@@ -69,7 +69,8 @@ client.on('messageCreate', async (message) => {
         return;
     }
 
-    const targetContent = 'ExampleBot'; // Replace with your bot's name
+    // TODO: Replace with your bot's name
+    const targetContent = 'ExampleBot';
     const lowerCaseMessage = message.content.toLowerCase();
 
     if (lowerCaseMessage.includes(targetContent.toLowerCase()) || message.mentions.has(client.user)) {
