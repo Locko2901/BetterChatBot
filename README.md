@@ -57,7 +57,7 @@ I recommend having a server to thoroughly test your bot. Bugs are not uncommon a
 
 If you decide to create a dev-server, remember to copy and store your server id for later. You will need it in the `config.json`.
 
-To get it simply enable Developer Mode by going to User Settings > Appearance > Advanced and toggle on Developer Mode. Then right-click on the server name in the left sidebar and click on "Copy ID" to copy the server ID to your clipboard.
+To get it simply enable Developer Mode by going to `User Settings > Appearance > Advanced` and toggle on Developer Mode. Then right-click on the server name in the left sidebar and click on "Copy ID" to copy the server ID to your clipboard.
 
 ### Invite Bot to Your Server
 
@@ -76,7 +76,7 @@ Once your bot account is set up, you'll need to invite it to a Discord server fo
 To get your OpenAI API Key you can follow the steps below:
 
 * Visit [OpenAI's official platform website](https://platform.openai.com/api-keys) and create an account if you don't have one or log in to your OpenAI account using your email address and password or through Google/Microsoft accounts.
-* Navigate the tab that says "API keys".
+* Navigate to the tab that says "API keys".
 * Click on "Create New Secret Key" to generate a new API key.
 * Ensure to save the API key immediately as you won't be able to reopen the window once it closes.
 * New users receive $5 worth of credit for free, which expires after three months.
@@ -150,7 +150,6 @@ nano config.json
   "clientId": "your_bot_id",
   "guildId": "your_dev_server_id",
   "key": "your_openai_key",
-  "userId": "your_user_id",
   "ppkey": "your_perplexityai_key"
 }
 ```
