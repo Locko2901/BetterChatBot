@@ -56,7 +56,7 @@ npm install
 
 ### Step 3: Configure config.json
 
-Properly fill out the config.json located in the main project directory as follows:
+Properly fill out the `config.json` located in the main project directory as follows:
 
 ```shell
 {
@@ -71,7 +71,62 @@ Properly fill out the config.json located in the main project directory as follo
 
 Replace placeholders with your actual data.
 
+## Enabling Commands in ExampleBot
+
+Uncomment specific sections within the `index.js` and `deploy-commands.js` file (marked as `TODO`)of ExampleBot to enable command handling. Deploy the commands using:
+
+```shell
+node src/deploy-commands.js
+```
+
+## Running Bots with PM2
+
+To manage your bots with PM2, a powerful Node.js process manager, follow the instructions below:
+
+### 1. Creating ecosystem.config.js
+
+In the main project directory, create an `ecosystem.config.js` file with the following example content:
+
+```shell
+// Adjust as needed
+module.exports = {
+  apps : [{
+    name: 'ChatBot',
+    script: './ChatBot/src/discordBot.js',
+    watch: true,
+  }, {
+    name: 'ExampleBot',
+    script: './ExampleBot/src/index.js',
+    watch: true,
+  }]
+};
+```
+
+### 2. Install PM2
+
+If not already installed, install PM2 globally using npm:
+
+```shell
+npm install pm2 -g
+```
+
+### 3. Start the Bots
+
+Navigate to the main project directory (where your `ecosystem.config.js` file is located) and start your bots:
+
+```shell
+pm2 start ecosystem.config.js
+```
+
+### 4. Monitor and Manage Processes
+* List all running processes: `pm2 ls`
+* Monitor logs and application information: `pm2 monit`
+* View logs in real-time: `pm2 logs`
+* Stop all applications: `pm2 stop all`
+* Restart all applications: `pm2 restart all`
+
+PM2 ensures your bots auto-restart in case of a crash, offering higher uptime and reliability.
+
+Your bots should now be correctly set up and running. This comprehensive guide should assist you in managing your bots efficiently. Happy developing!
 
 
-
-  
