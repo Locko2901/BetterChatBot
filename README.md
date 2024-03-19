@@ -63,7 +63,7 @@ To get it simply enable Developer Mode by going to `User Settings > Appearance >
 
 Once your bot account is set up, you'll need to invite it to a Discord server for it to become operational. To do this, you can follow there steps:
 
-* In the  Developer Portal](https://discord.com/developers/applications), go to your bot's application page.
+* In the [Discord Developer Portal](https://discord.com/developers/applications), go to your bot's application page.
 * Navigate to the "OAuth2" tab, then scroll down to the "URL Generator".
 * Under “Scopes”, tick the “bot” and the "applications.commands" checkbox.
 * Below, in “Bot Permissions”, select the permissions your bot requires to function as intended. For simplicity you can just select "Administrator".
