@@ -55,7 +55,7 @@ To interact with Discord servers through your applications, a bot account on Dis
 
 ### (Optional) Set Up a Development Server
 
-A development server is recommended for thorough testing and deploying commands. To set one up:
+A development server is recommended for thorough testing and locally deploying commands. To set one up:
 
 1. Enable Developer Mode in `User Settings > App Settings > Advanced` by toggling Developer Mode on.
 2. Right-click on the server name in the sidebar and select "Copy ID" to save your server ID for the `config.json`.
@@ -214,7 +214,7 @@ Verify Git's installation by rerunning the version check command.
 
 ### Step 1: Clone the Repository
 
-Clone the repository. This will download all the files needed to start working with the bot.
+Begin by cloning the repository to download all necessary files:
 
 ```shell
 git clone https://github.com/Locko2901/BetterChatBot
@@ -222,31 +222,32 @@ git clone https://github.com/Locko2901/BetterChatBot
 
 ### Step 2: Install Dependencies
 
-Navigate to each bot directory (`ChatBot` and `ExampleBot`) and run `npm install` to install Node.js dependencies.
+For each bot directory (`ChatBot` and `ExampleBot`), you need to install Node.js dependencies:
 
 ```shell
 cd ChatBot
 npm install
 ```
-
 ```shell
 cd ../ExampleBot
 npm install
 ```
 
-### Step 3: Configure config.json
+### Step 3: Configure `config.json`
 
-Navigate back into your main project directory:
+Return to the main project directory:
 
 ```shell
 cd ../
 ```
 
-Properly fill out the `config.json` located there using the code editor of your choice. I'll be using `nano` in this example:
+Edit the `config.json` file with your preferred code editor (e.g., using `nano`):
 
 ```shell
 nano config.json
 ```
+
+The structure should be as follows:
 
 ```shell
 {
@@ -259,113 +260,110 @@ nano config.json
 }
 ```
 
-When you're done, save the file by pressing `ctrl + o`, confirm with `enter` and exit the editor by pressing `ctrl + x`.
+Remember to save and exit the editor upon completion.
 
-## (Optional but recommended) Personalizing Your Bot
+## Personalization (Optional)
 
-There are 2 ways in which you can personalize the bot: With the `personalityPrompt` you can define the bots behaviour/character. To modify it, open the `index.js` file of the ChatBot:
+Customize your bot to suit your preferences:
+
+### Modifying Bot Behavior
+
+Adjust the `personalityPrompt` to define the bot's behavior/character by editing `index.js` in the `ChatBot` directory:
 
 ```shell
 nano ChatBot/src/index.js
 ```
 
-And look for this line of code:
+Locate and modify the line:
 
 `let personalityPrompt = ...`
 
-It will be marked with `TODO`, as well as instructions.
+This will be marked with `TODO` and additional instructions.
 
-The `targetContent` defines the name that the bot listens to. To change it, open the `index.js` file of the ExampleBot:
+### Changing Bot Name
+
+To alter the name the bot responds to (`targetContent`), edit `index.js` in the `ExampleBot` directory:
 
 ```shell
 nano ExampleBot/src/index.js
 ```
 
-And look for the following line of code:
+Look for the line:
 
 `const targetContent = 'ExampleBot';`
 
-It will also be marked as `TODO`.
+Marked as `TODO`.
 
-## (Optional) Enabling Commands in ExampleBot
+## Enabling Commands in ExampleBot (Optional)
 
-To enable command handling, you need to uncomment specific sections within the `index.js` and `deploy-commands.js` files of ExampleBot. These sections are marked with `TODO` comments to indicate where modifications are necessary. I'll be using `nano` again as my code editor.
+Enable command handling by uncommenting sections in `index.js` and `deploy-commands.js` and follow the guided instructions:
 
 ```shell
 nano ExampleBot/src/index.js
 ```
-
 ```shell
 nano ExampleBot/src/deploy-commands.js
 ```
 
-Once done, save and exit as described before.
-
-Then deploy the commands using:
+Deploy the commands with:
 
 ```shell
 node ExampleBot/src/deploy-commands.js
 ```
 
-## (Optional) Running Bots with PM2
+## Running Bots with PM2 (Optional)
 
-To manage the bot with PM2, a powerful Node.js process manager, follow the instructions below:
+PM2 is a robust Node.js process manager to increase bot uptime:
 
-### 1. Creating ecosystem.config.js
+### Setting Up PM2
 
-In the main project directory, create an `ecosystem.config.js` file:
+1. **Create an `ecosystem.config.js` File**
 
-```shell
-nano ecosystem.config.js
-```
+   Navigate to the main directory and create `ecosystem.config.js`:
 
-And paste in the following lines of code:
+   ```shell
+   nano ecosystem.config.js
+   ```
 
-```shell
-// Adjust as needed
-module.exports = {
-  apps : [{
-    name: 'ChatBot',
-    script: './ChatBot/src/index.js',
-    watch: true,
-  }, {
-    name: 'ExampleBot',
-    script: './ExampleBot/src/index.js',
-    watch: true,
-  }]
-};
-```
+   Insert the following configurations:
 
-Don't forget to save and exit. ;)
+   ```shell
+   // Adjust as needed
+   module.exports = {
+     apps : [{
+       name: 'ChatBot',
+       script: './ChatBot/src/index.js',
+       watch: true,
+     }, {
+       name: 'ExampleBot',
+       script: './ExampleBot/src/index.js',
+       watch: true,
+     }]
+   };
+   ```
 
-### 2. Install PM2
+2. **Installing PM2**
 
-If not already installed, install PM2 globally using npm:
+   If PM2 is not installed, proceed with its installation:
 
-```shell
-npm install pm2 -g
-```
+   ```shell
+   npm install pm2 -g
+   ```
 
-### 3. Start the Bots
+3. **Launching the Bots**
 
-Now all that is left to do is start the Bot by running the following command:
+   Start the bots using PM2:
 
-```shell
-pm2 start ecosystem.config.js
-```
+   ```shell
+   pm2 start ecosystem.config.js
+   ```
 
-### 4. Monitor and Manage Processes
+   PM2 Commands:
 
-* List all running processes: `pm2 ls`
-* Monitor logs and application information: `pm2 monit`
-* View logs in real-time: `pm2 logs`
-* Stop all applications: `pm2 stop all`
-* Restart all applications: `pm2 restart all`
+   - List all processes: `pm2 ls`
+   - Monitor logs: `pm2 monit`
+   - View logs in real-time: `pm2 logs`
+   - Stop all applications: `pm2 stop all`
+   - Restart all applications: `pm2 restart all`
 
-PM2 ensures your bots auto-restart in case of a crash, offering higher uptime and reliability.
-
-***
-
-Your bot should now be correctly set up and running. ^^
-
-
+These steps ensure your bot is properly set up, customized to your preference, and reliably running.
