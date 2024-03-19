@@ -31,6 +31,9 @@ Upon cloning the repository, you will find the following structure:
     └── src
         ├── commands
         │   └── fun
+        │       └── imagine.js
+        ├── deploy-commands.js
+        └── index.js
 ```
 
 ## Initial Setup
