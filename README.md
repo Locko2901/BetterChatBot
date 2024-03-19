@@ -51,7 +51,7 @@ node -v
 npm -v
 ```
 
-If you see the version numbers for both, you're good to go! If not, or if you need to install them, head over to [Node.js's official website]([https://nodejs.org/](https://nodejs.org/en/download/)) and grab the latest LTS installer, which includes `npm`. After installation, run the above commands again to verify.
+If you see the version numbers for both, you're good to go! If not, or if you need to install them, head over to [Node.js's official website](https://nodejs.org/en/download/) and grab the latest LTS installer, which includes `npm`. After installation, run the above commands again to verify.
 
 ### Step 1: Clone the Repository
 
