@@ -465,7 +465,9 @@ The bot utilizes the following communication endpoints for interacting with the 
 
 These endpoints are set to work with a local server setup by default. However, you can easily configure them to use more professional, domain-based endpoints for a production environment.
 
-### Attaching a Custom Domain (Optional)
+### Advanced Setup: Attaching a Custom Domain (Optional)
+
+#### Attention: Only recommended for users familiar with server management and DNS configurations.
 
 Attaching a custom domain to your server hosting the bot not only enhances the professionalism of your endpoints but also makes them more memorable. Here is a tiny guide to get you started with attaching a custom domain and setting up SSL:
 
