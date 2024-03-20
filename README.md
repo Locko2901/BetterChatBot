@@ -106,7 +106,7 @@ For users looking for a quicker setup experience, a new release now includes an 
    - For users on graphical interfaces (such as GNOME, KDE, etc.), you can often right-click the `Setup.zip` file and select an option like "Extract Here" or "Extract to..." without needing to use the terminal.
 5. Navigate to the `BetterChatBot` directory within the extracted files.
    ```shell
-   cd /path/to/extract/location/BetterChatBot
+   cd /path/to/extract/location/BasicSetup/BetterChatBot
    ```
 6. Make the `installer.sh` script executable and run it:
    ```shell
