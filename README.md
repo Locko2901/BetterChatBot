@@ -13,6 +13,28 @@ Upon cloning the repository, you will find the following structure:
 
 ```shell
 .
+├── BasicSetup
+│   └── BetterChatBot
+│       ├── ChatBot
+│       │   ├── package.json
+│       │   ├── package-lock.json
+│       │   └── src
+│       │       ├── conversationHistory.js
+│       │       ├── conversation_history.json
+│       │       ├── countTokens.js
+│       │       ├── discordBot.js
+│       │       ├── evaluateMessageForWebSearch.js
+│       │       ├── index.js
+│       │       └── performWebSearch.js
+│       ├── config.json
+│       ├── ecosystem.config.js
+│       ├── ExampleBot
+│       │   ├── package.json
+│       │   ├── package-lock.json
+│       │   └── src
+│       │       └── index.js
+│       ├── installer.sh
+│       └── Setup.zip
 ├── ChatBot
 │   ├── package.json
 │   ├── package-lock.json
@@ -25,15 +47,16 @@ Upon cloning the repository, you will find the following structure:
 │       ├── index.js
 │       └── performWebSearch.js
 ├── config.json
-└── ExampleBot
-    ├── package.json
-    ├── package-lock.json
-    └── src
-        ├── commands
-        │   └── fun
-        │       └── imagine.js
-        ├── deploy-commands.js
-        └── index.js
+├── ExampleBot
+│   ├── package.json
+│   ├── package-lock.json
+│   └── src
+│       ├── commands
+│       │   └── fun
+│       │       └── imagine.js
+│       ├── deploy-commands.js
+│       └── index.js
+└── README.md
 ```
 
 ## Simplified Setup Using the Install Script
