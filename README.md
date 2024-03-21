@@ -337,7 +337,7 @@ The structure should be as follows:
 
 ```shell
 {
-  "note" : "it is encouraged to use dotenv for this",
+  "note" : "it is encouraged to use dotenv for the tokens",
   "token": "your_bot_token",
   "clientId": "your_bot_id",
   "guildId": "your_dev_server_id",
