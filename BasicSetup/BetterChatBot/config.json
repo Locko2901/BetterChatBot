@@ -7,6 +7,6 @@
   "ppkey": "your_perplexityai_key",
   "name": "your_bots_name",
   "aboutYou": "your_bots_personality",
-  "aboutCreator": "your_bots_knowledge_about_you"
+  "aboutCreator": "your_bots_knowledge_about_you",
+  "timezone": "your_timezone"
  }
-

@@ -6,6 +6,7 @@ const { EventEmitter } = require('events');
 const cors = require('cors');
 const evaluateMessageForWebSearch = require('./evaluateMessageForWebSearch');
 const performWebSearch = require('./performWebSearch');
+const { currentDate, currentTimeOnly } = require('./currentTime');
 const {
   saveConversationHistoryToFile,
   loadConversationHistoryFromFile,
@@ -179,12 +180,13 @@ app.post('/userMessage', async (req, res) => {
   res.json({ message: 'Message received by the server.', chatbotResponse: chatbotResponses });
 });
 
-const systemMessage = `Your creator is currently standing in front of you, he starts talking... Every interaction following belongs to the same conversation.`; //Replace with any instruction you want to add
-
 async function generateResponses(messageBatches, userMessageHistory, assistantMessageHistory) {
   const responses = [];
 
   for (const batch of messageBatches) { 
+
+    const systemMessage = `Your creator is standing in front of you at the moment. It's currently ${currentTimeOnly()}, and today's date is ${currentDate()}, formatted as DD/MM/YYYY.`; // Edit as you please; Time function might be useful.
+
     // Combine user and assistant history, then add the current batch message.
     const combinedMessages = [...userMessageHistory, ...assistantMessageHistory, { role: 'user', content: batch }];
 
@@ -197,7 +199,7 @@ async function generateResponses(messageBatches, userMessageHistory, assistantMe
     try {
       const response = await openai.chat.completions.create({
         model: 'gpt-4-1106-preview',
-        messages: filteredMessages.concat([{ role: 'system', content: userPrompt + "\n\n" + systemMessageContent }]),
+        messages: filteredMessages.concat([{ role: 'system', content: userPrompt + "\n\n" + systemMessageContent + "\n\n" + systemMessage }]),
         temperature: 0.7,
         max_tokens: 750,
       });

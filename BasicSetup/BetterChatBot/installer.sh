@@ -107,6 +107,52 @@ read -p "About your bot (default: 'You love to chat and learn new things!'): " b
 botaboutyou=${botaboutyou:-"You love to chat and learn new things!"}  
 read -p "About the creator (optional, e.g., 'Created by Lockoo, an AI enthusiast.'): " botaboutcreator
 
+read -p "Press enter to continue after completing these steps."
+
+function display_timezones {
+  cat <<EOF
+
+  Please select your timezone from the list below:
+  ------------------------------------------------------------
+    1. `Africa/Johannesburg` - South African Standard Time (SAST)
+    2. `America/Chicago` - Central Standard Time (CST)/Central Daylight Time (CDT)
+    3. `America/Los_Angeles` - Pacific Standard Time (PST)/Pacific Daylight Time (PDT)
+    4. `America/Mexico_City` - Central Standard Time (CST)/Central Daylight Time (CDT)
+    5. `America/New_York` - Eastern Standard Time (EST)/Eastern Daylight Time (EDT)
+    6. `America/Sao_Paulo` - Brasília Time (BRT)/Brasília Summer Time (BRST)
+    7. `America/Toronto` - Eastern Standard Time (EST)/Eastern Daylight Time (EDT)
+    8. `Asia/Bangkok` - Indochina Time (ICT)
+    9. `Asia/Dubai` - Gulf Standard Time (GST)
+    10. `Asia/Kolkata` - Indian Standard Time (IST)
+    11. `Asia/Seoul` - Korea Standard Time (KST)
+    12. `Asia/Shanghai` - China Standard Time (CST)
+    13. `Asia/Singapore` - Singapore Standard Time (SGT)
+    14. `Asia/Tokyo` - Japan Standard Time (JST)
+    15. `Australia/Sydney` - Australian Eastern Standard Time (AEST)/Australian Eastern Daylight Time (AEDT)
+    16. `Europe/Berlin` - Central European Time (CET)/Central European Summer Time (CEST)
+    17. `Europe/Istanbul` - Turkey Time (TRT)
+    18. `Europe/London` - Greenwich Mean Time (GMT)/British Summer Time (BST)
+    19. `Europe/Moscow` - Moscow Standard Time (MSK)
+    20. `Europe/Paris` - Central European Time (CET)/Central European Summer Time (CEST)
+
+  ------------------------------------------------------------
+  If your timezone is not listed here, please look it up and use the IANA timezone format (Region/City) corresponding to your local time.
+  
+EOF
+}
+
+echo "Last step: Configuring your timezone"
+display_timezones
+
+echo "Enter your timezone. Use the IANA timezone format (eg. Europe/Berlin)."
+read -p "Timezone: " timezone
+
+#if [ -z "$timezone" ]; then
+#  echo "You didn't enter a timezone. Please try again."
+#else
+#  echo "Your selected timezone is: $timezone"
+#fi
+
 echo "Configuring the config.json file..."
 cat > config.json <<EOT
 {
@@ -117,7 +163,8 @@ cat > config.json <<EOT
   "ppkey": "$perplexitykey",
   "name": "$botname",
   "aboutYou": "$botaboutyou",
-  "aboutCreator": "$botaboutcreator"
+  "aboutCreator": "$botaboutcreator",
+  "timezone": "$timezone"
 }
 EOT
 

@@ -343,8 +343,32 @@ The structure should be as follows:
   "guildId": "your_dev_server_id",
   "key": "your_openai_key",
   "ppkey": "your_perplexityai_key"
+  "timezone": "your_timezone(eg. Europe/Berlin)",
 }
 ```
+
+#### Tipp: Some of the Most Common Timezones Are:
+
+1. `Africa/Johannesburg` - South African Standard Time (SAST)
+2. `America/Chicago` - Central Standard Time (CST)/Central Daylight Time (CDT)
+3. `America/Los_Angeles` - Pacific Standard Time (PST)/Pacific Daylight Time (PDT)
+4. `America/Mexico_City` - Central Standard Time (CST)/Central Daylight Time (CDT)
+5. `America/New_York` - Eastern Standard Time (EST)/Eastern Daylight Time (EDT)
+6. `America/Sao_Paulo` - Brasília Time (BRT)/Brasília Summer Time (BRST)
+7. `America/Toronto` - Eastern Standard Time (EST)/Eastern Daylight Time (EDT)
+8. `Asia/Bangkok` - Indochina Time (ICT)
+9. `Asia/Dubai` - Gulf Standard Time (GST)
+10. `Asia/Kolkata` - Indian Standard Time (IST)
+11. `Asia/Seoul` - Korea Standard Time (KST)
+12. `Asia/Shanghai` - China Standard Time (CST)
+13. `Asia/Singapore` - Singapore Standard Time (SGT)
+14. `Asia/Tokyo` - Japan Standard Time (JST)
+15. `Australia/Sydney` - Australian Eastern Standard Time (AEST)/Australian Eastern Daylight Time (AEDT)
+16. `Europe/Berlin` - Central European Time (CET)/Central European Summer Time (CEST)
+17. `Europe/Istanbul` - Turkey Time (TRT)
+18. `Europe/London` - Greenwich Mean Time (GMT)/British Summer Time (BST)
+19. `Europe/Moscow` - Moscow Standard Time (MSK)
+20. `Europe/Paris` - Central European Time (CET)/Central European Summer Time (CEST)
 
 Remember to save and exit the editor upon completion.
 
