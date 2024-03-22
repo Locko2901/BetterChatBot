@@ -22,6 +22,7 @@ Upon cloning the repository, you will find the following structure:
 │       │       ├── conversationHistory.js
 │       │       ├── conversation_history.json
 │       │       ├── countTokens.js
+│       │       ├── currentTime.js
 │       │       ├── discordBot.js
 │       │       ├── evaluateMessageForWebSearch.js
 │       │       ├── index.js
@@ -42,6 +43,7 @@ Upon cloning the repository, you will find the following structure:
 │       ├── conversationHistory.js
 │       ├── conversation_history.json
 │       ├── countTokens.js
+│       ├── currentTime.js
 │       ├── discordBot.js
 │       ├── evaluateMessageForWebSearch.js
 │       ├── index.js
