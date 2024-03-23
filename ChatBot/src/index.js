@@ -141,10 +141,17 @@ app.post('/userMessage', async (req, res) => {
       }
     }
 
-    userMessageHistory.push({ role: 'user', username: username, server: server, content: messageContent });
-      if (webResults) {
-        userMessageHistory.push({ role: 'assistant', content: `Web Results:\n${webResults}` });
-      }
+    userMessageHistory.push({ 
+      role: 'user', 
+      username: username, 
+      server: server, 
+      //timestamp: `${currentDate()} ${currentTimeOnly()}`, // left in, in case anyone needs it
+      content: `timestamp: ${currentDate()} ${currentTimeOnly()}, message: ${messageContent}`
+    });
+    
+    if (webResults) {
+      userMessageHistory.push({ role: 'assistant', content: `Web Results:\n${webResults}` });
+    }    
     
     //userMessageHistory.push({ role: 'user', username: username, server: server, content: batch });
     userMessageTokens += currentMessageTokens;
