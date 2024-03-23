@@ -349,6 +349,8 @@ The structure should be as follows:
 }
 ```
 
+Remember to save and exit the editor upon completion.
+
 #### Tipp: Some of the Most Common Timezones Are:
 
 1. `Africa/Johannesburg` - South African Standard Time (SAST)
@@ -371,8 +373,6 @@ The structure should be as follows:
 18. `Europe/London` - Greenwich Mean Time (GMT)/British Summer Time (BST)
 19. `Europe/Moscow` - Moscow Standard Time (MSK)
 20. `Europe/Paris` - Central European Time (CET)/Central European Summer Time (CEST)
-
-Remember to save and exit the editor upon completion.
 
 ## Personalization (Optional)
 
