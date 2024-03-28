@@ -1,9 +1,10 @@
-const { DateTime } = require('luxon');
 const fs = require('fs');
+const path = require('path');
 
 function loadConfig() {
     try {
-        const rawData = fs.readFileSync('../../../config.json', 'utf-8');
+        const configPath = path.join(__dirname, '../../../config.json');
+        const rawData = fs.readFileSync(configPath, 'utf-8');
         const config = JSON.parse(rawData);
         return config;
     } catch (error) {
