@@ -1,17 +1,18 @@
-const { OpenAI } = require('openai');
-const { key } = require('../../config.json')
 const express = require('express');
 const bodyParser = require('body-parser');
-const { EventEmitter } = require('events');
 const cors = require('cors');
-const evaluateMessageForWebSearch = require('./evaluateMessageForWebSearch');
-const performWebSearch = require('./performWebSearch');
-const { currentDate, currentTimeOnly } = require('./currentTime');
+const { EventEmitter } = require('events');
+const { OpenAI } = require('openai');
+
+const { key } = require('../../config.json');
+const evaluateMessageForWebSearch = require('./modules/evaluateMessageForWebSearch');
+const performWebSearch = require('./modules/performWebSearch');
+const { currentDate, currentTimeOnly } = require('./modules/currentTime');
 const {
   saveConversationHistoryToFile,
   loadConversationHistoryFromFile,
   pruneConversationHistory,
-} = require('./conversationHistory');
+} = require('./modules/conversationHistory');
 
 const app = express();
 const port = 4000;
@@ -26,7 +27,7 @@ const maxMessageCount = 25; // Maximum number of messages
 
 pruneConversationHistory(sharedConversationHistory, maxHistorySize, maxMessageCount);
 
-const maxTotalTokens = 75000; 
+const maxTotalTokens = 75000;
 const maxConvTokens = 20000; //Adjust as needed
 
 // TODO: Set bot personality: About you - describes the bot; About your creator - only needed for better helping capabilities (not mandatory); General - leave untouched!!
@@ -49,13 +50,13 @@ let chatPrompt = personalityPrompt;
 app.use(bodyParser.json());
 app.use(cors());
 
-const openaiAPIKey = key; 
+const openaiAPIKey = key;
 const openai = new OpenAI({ apiKey: openaiAPIKey });
 
 const countTokens = (messages) => {
   return messages.reduce((totalTokens, message) => {
     if (message.content) {
-      const tokenCount = message.content.split(' ').length; 
+      const tokenCount = message.content.split(' ').length;
       return totalTokens + tokenCount;
     }
     return totalTokens;
@@ -83,7 +84,7 @@ const splitLongMessages = (messageContent) => {
   return messageBatches;
 };
 
-let userPrompts = {}; 
+let userPrompts = {};
 let userPrompt;
 
 app.post('/userMessage', async (req, res) => {
@@ -108,12 +109,12 @@ app.post('/userMessage', async (req, res) => {
   const needsWebSearch = await evaluateMessageForWebSearch(messageContent);
 
   let webResults = '';
-    if (needsWebSearch) {
-      console.log('Performing web search for message:', messageContent);
-      const searchResponse = await performWebSearch(messageContent);
-      webResults = searchResponse.choices[0].message.content; 
-      console.log('Web Results:', webResults);
-    }
+  if (needsWebSearch) {
+    console.log('Performing web search for message:', messageContent);
+    const searchResponse = await performWebSearch(messageContent);
+    webResults = searchResponse.choices[0].message.content;
+    console.log('Web Results:', webResults);
+  }
 
   // Prepare the message batch, including the potential web search result.
   const messageBatches = splitLongMessages(messageContent + (webResults ? ("\nWeb Results: " + webResults) : ""));
@@ -141,18 +142,18 @@ app.post('/userMessage', async (req, res) => {
       }
     }
 
-    userMessageHistory.push({ 
-      role: 'user', 
-      username: username, 
-      server: server, 
+    userMessageHistory.push({
+      role: 'user',
+      username: username,
+      server: server,
       //timestamp: `${currentDate()} ${currentTimeOnly()}`, // left in, in case anyone needs it
       content: `timestamp: ${currentDate()} ${currentTimeOnly()}, message: ${messageContent}`
     });
-    
+
     if (webResults) {
       userMessageHistory.push({ role: 'assistant', content: `Web Results:\n${webResults}` });
-    }    
-    
+    }
+
     //userMessageHistory.push({ role: 'user', username: username, server: server, content: batch });
     userMessageTokens += currentMessageTokens;
   });
@@ -190,7 +191,7 @@ app.post('/userMessage', async (req, res) => {
 async function generateResponses(messageBatches, userMessageHistory, assistantMessageHistory) {
   const responses = [];
 
-  for (const batch of messageBatches) { 
+  for (const batch of messageBatches) {
 
     const systemMessage = `Your creator is standing in front of you at the moment. It's currently ${currentTimeOnly()}, and today's date is ${currentDate()}, formatted as DD/MM/YYYY.`; // Edit as you please; Time function might be useful.
 

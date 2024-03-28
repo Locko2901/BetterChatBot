@@ -1,8 +1,9 @@
 const { Client, GatewayIntentBits } = require('discord.js');
 const axios = require('axios');
 const EventEmitter = require('events');
-const evaluateMessageForWebSearch = require('../../ChatBot/src/evaluateMessageForWebSearch');
-const { token, name } = require('../../config.json'); 
+
+const evaluateMessageForWebSearch = require('../../ChatBot/src/modules/evaluateMessageForWebSearch');
+const { token, name } = require('../../config.json');
 
 const client = new Client({
     intents: [
@@ -13,8 +14,8 @@ const client = new Client({
     ],
 });
 
-const serverUserMessageEndpoint = 'http://localhost:4000/userMessage'; 
-const serverAssistantResponseEndpoint = 'http://localhost:4000/assistantResponse'; 
+const serverUserMessageEndpoint = 'http://localhost:4000/userMessage';
+const serverAssistantResponseEndpoint = 'http://localhost:4000/assistantResponse';
 
 const eventEmitter = new EventEmitter();
 
@@ -42,7 +43,7 @@ client.on('messageCreate', async (message) => {
 
         const data = {
             userQuery: messageContent,
-            server: message.guild.name, 
+            server: message.guild.name,
         };
 
         messageQueue.push({ message, data });
@@ -60,7 +61,7 @@ async function processNextMessage() {
 
         message.channel.sendTyping();
 
-        let preliminaryMessage = null; 
+        let preliminaryMessage = null;
 
         const needsWebSearch = await evaluateMessageForWebSearch(data.userQuery);
 
@@ -78,7 +79,7 @@ async function processNextMessage() {
                     if (error.code === 10008) {
                         console.warn('Attempted to delete an unknown message. It might have been already deleted.');
                     } else {
-                        throw error; 
+                        throw error;
                     }
                 });
             }
@@ -118,7 +119,7 @@ function splitLongMessage(message) {
     const maxLength = 1000;
     const parts = [];
 
-    const sentences = message.split('. '); 
+    const sentences = message.split('. ');
     let currentPart = '';
 
     for (const sentence of sentences) {

@@ -1,19 +1,18 @@
 const fs = require('fs');
 const path = require('path');
 
-function saveConversationHistoryToFile(history) {
-  fs.writeFileSync(path.join(__dirname, 'conversation_history.json'), JSON.stringify(history), 'utf8');
-}
-
-const path = require('path');
+// Define the path to the conversation_history.json file in the Data directory
+const filePath = path.join(__dirname, '..', 'data', 'conversation_history.json');
 
 function saveConversationHistoryToFile(history) {
-  fs.writeFileSync(path.join(__dirname, 'conversation_history.json'), JSON.stringify(history), 'utf8');
+  // Update the method to use filePath
+  fs.writeFileSync(filePath, JSON.stringify(history), 'utf8');
 }
 
 function loadConversationHistoryFromFile() {
   try {
-    const data = fs.readFileSync(path.join(__dirname, 'conversation_history.json'), 'utf8');
+    // Update the method to use filePath
+    const data = fs.readFileSync(filePath, 'utf8');
     return JSON.parse(data);
   } catch (error) {
     return [];
