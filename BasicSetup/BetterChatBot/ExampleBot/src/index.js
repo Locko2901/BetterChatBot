@@ -118,30 +118,32 @@ eventEmitter.on('botResponse', async (responseData) => {
 function splitLongMessage(message) {
     const maxLength = 1000;
     const parts = [];
+    const sentences = message.split(/(?<=\. )/); // Use a positive lookbehind to keep the delimiter
 
-    const sentences = message.split('. ');
     let currentPart = '';
 
     for (const sentence of sentences) {
+        // Check if the sentence itself is too long
         if (sentence.length > maxLength) {
-            const splitSentence = sentence.match(/.{1,1000}(\s|$)|\S+?(\s|$)/g) || [];
-            for (const part of splitSentence) {
-                if (currentPart.length + part.length <= maxLength) {
-                    currentPart += part;
-                } else {
-                    if (currentPart !== '') parts.push(currentPart);
-                    currentPart = part;
-                }
+            let remainingSentence = sentence;
+            while (remainingSentence.length > 0) {
+                const chunk = remainingSentence.substring(0, maxLength);
+                parts.push(chunk);
+                remainingSentence = remainingSentence.substring(maxLength);
             }
-        } else if (currentPart.length + sentence.length + 2 <= maxLength) {
-            currentPart += (currentPart !== '' ? '. ' : '') + sentence;
         } else {
-            parts.push(currentPart);
-            currentPart = sentence;
+            // Add sentence to currentPart if it fits, otherwise push currentPart and start a new one
+            if (currentPart.length + sentence.length <= maxLength) {
+                currentPart += sentence;
+            } else {
+                parts.push(currentPart);
+                currentPart = sentence;
+            }
         }
     }
 
-    if (currentPart !== '') {
+    // Make sure to add the last part if it's not empty
+    if (currentPart.length > 0) {
         parts.push(currentPart);
     }
 
