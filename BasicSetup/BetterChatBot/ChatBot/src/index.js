@@ -142,7 +142,7 @@ app.post('/userMessage', async (req, res) => {
     });
 
     if (webResults) {
-      userMessageHistory.push({ role: 'assistant', content: `Web Results:\n${webResults}` });
+      assistantMessageHistory.push({ role: 'assistant', content: `Web Results:\n${webResults}` });
     }
 
     userMessageTokens += currentMessageTokens;
@@ -189,7 +189,7 @@ async function generateResponses(messageBatches, userMessageHistory, assistantMe
 
     const filteredMessages = combinedMessages.map(({ role, content }) => ({ role, content }));
 
-    const systemMessageContent = "Consider the web search results as the most current information available. They come from mostly verified and trusted sources. Integrate this information accurately into your responses.";
+    const systemMessageContent = "Consider the web search results as the most current information available. They come from mostly verified and trusted sources. Since only you have access to these web results, integrate this information accurately into your responses.";
 
     try {
       const response = await openai.chat.completions.create({

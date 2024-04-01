@@ -151,7 +151,7 @@ app.post('/userMessage', async (req, res) => {
     });
 
     if (webResults) {
-      userMessageHistory.push({ role: 'assistant', content: `Web Results:\n${webResults}` });
+      assistantMessageHistory.push({ role: 'assistant', content: `Web Results:\n${webResults}` });
     }
 
     //userMessageHistory.push({ role: 'user', username: username, server: server, content: batch });
@@ -202,12 +202,14 @@ async function generateResponses(messageBatches, userMessageHistory, assistantMe
     const filteredMessages = combinedMessages.map(({ role, content }) => ({ role, content }));
 
     // Prepare additional system message. Don't touch, borks easily!!
-    const systemMessageContent = "Consider the web search results as the most current information available. They come from mostly verified and trusted sources. Integrate this information accurately into your responses.";
+    const systemMessageContent = "Consider the web search results as the most current information available. They come from mostly verified and trusted sources. Since only you have access to these web results, integrate this information accurately into your responses.";
+
+    const currentWebResults = "current web results: "
 
     try {
       const response = await openai.chat.completions.create({
         model: 'gpt-4-1106-preview',
-        messages: filteredMessages.concat([{ role: 'system', content: userPrompt + "\n\n" + systemMessageContent + "\n\n" + systemMessage }]),
+        messages: filteredMessages.concat([{ role: 'system', content: userPrompt + "\n\n" + systemMessageContent + "\n\n" + systemMessage + "\n\n" + currentWebResults }]),
         temperature: 0.7,
         max_tokens: 750,
       });
