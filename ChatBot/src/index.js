@@ -204,12 +204,10 @@ async function generateResponses(messageBatches, userMessageHistory, assistantMe
     // Prepare additional system message. Don't touch, borks easily!!
     const systemMessageContent = "Consider the web search results as the most current information available. They come from mostly verified and trusted sources. Since only you have access to these web results, integrate this information accurately into your responses.";
 
-    const currentWebResults = "current web results: "
-
     try {
       const response = await openai.chat.completions.create({
         model: 'gpt-4-1106-preview',
-        messages: filteredMessages.concat([{ role: 'system', content: userPrompt + "\n\n" + systemMessageContent + "\n\n" + systemMessage + "\n\n" + currentWebResults }]),
+        messages: filteredMessages.concat([{ role: 'system', content: userPrompt + "\n\n" + systemMessageContent + "\n\n" + systemMessage }]),
         temperature: 0.7,
         max_tokens: 750,
       });
