@@ -14,50 +14,54 @@ Upon cloning the repository, you will find the following structure:
 ```shell
 .
 ├── BasicSetup
-│   └── BetterChatBot
-│       ├── ChatBot
-│       │   ├── package.json
-│       │   ├── package-lock.json
-│       │   └── src
-│       │       ├── conversationHistory.js
-│       │       ├── conversation_history.json
-│       │       ├── countTokens.js
-│       │       ├── currentTime.js
-│       │       ├── discordBot.js
-│       │       ├── evaluateMessageForWebSearch.js
-│       │       ├── index.js
-│       │       └── performWebSearch.js
-│       ├── config.json
-│       ├── ecosystem.config.js
-│       ├── ExampleBot
-│       │   ├── package.json
-│       │   ├── package-lock.json
-│       │   └── src
-│       │       └── index.js
-│       ├── installer.sh
-│       └── Setup.zip
+│   └── BetterChatBot
+│       ├── ChatBot
+│       │   ├── package.json
+│       │   ├── package-lock.json
+│       │   └── src
+│       │       ├── data
+│       │       │   └── conversation_history.json
+│       │       ├── index.js
+│       │       └── modules
+│       │           ├── conversationHistory.js
+│       │           ├── countTokens.js
+│       │           ├── currentTime.js
+│       │           ├── discordBot.js
+│       │           ├── evaluateMessageForWebSearch.js
+│       │           └── performWebSearch.js
+│       ├── config.json
+│       ├── ecosystem.config.js
+│       ├── ExampleBot
+│       │   ├── package.json
+│       │   ├── package-lock.json
+│       │   └── src
+│       │       └── index.js
+│       ├── installer.sh
+│       └── Setup.zip
 ├── ChatBot
-│   ├── package.json
-│   ├── package-lock.json
-│   └── src
-│       ├── conversationHistory.js
-│       ├── conversation_history.json
-│       ├── countTokens.js
-│       ├── currentTime.js
-│       ├── discordBot.js
-│       ├── evaluateMessageForWebSearch.js
-│       ├── index.js
-│       └── performWebSearch.js
+│   ├── package.json
+│   ├── package-lock.json
+│   └── src
+│       ├── data
+│       │   └── conversation_history.json
+│       ├── index.js
+│       └── modules
+│           ├── conversationHistory.js
+│           ├── countTokens.js
+│           ├── currentTime.js
+│           ├── discordBot.js
+│           ├── evaluateMessageForWebSearch.js
+│           └── performWebSearch.js
 ├── config.json
 ├── ExampleBot
-│   ├── package.json
-│   ├── package-lock.json
-│   └── src
-│       ├── commands
-│       │   └── fun
-│       │       └── imagine.js
-│       ├── deploy-commands.js
-│       └── index.js
+│   ├── package.json
+│   ├── package-lock.json
+│   └── src
+│       ├── commands
+│       │   └── fun
+│       │       └── imagine.js
+│       ├── deploy-commands.js
+│       └── index.js
 └── README.md
 ```
 
