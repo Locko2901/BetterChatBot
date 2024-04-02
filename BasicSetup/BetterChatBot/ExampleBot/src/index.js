@@ -39,7 +39,7 @@ client.on('messageCreate', async (message) => {
             return;
         }
 
-        const messageContent = `${message.author.username}:${message.content}`;
+        const messageContent = `${message.member.displayName}:${message.content}`;
 
         const data = {
             userQuery: messageContent,

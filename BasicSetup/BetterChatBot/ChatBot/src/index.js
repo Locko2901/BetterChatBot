@@ -81,10 +81,12 @@ const splitLongMessages = (messageContent) => {
 let userPrompts = {};
 let userPrompt;
 
+let username;
+
 app.post('/userMessage', async (req, res) => {
   const userMessage = req.body.userQuery;
   const server = req.body.server;
-  const username = userMessage.split(':')[0];
+  username = userMessage.split(':')[0];
   let messageContent = userMessage.split(':')[1].trim();
 
   console.log('Username:', username);
@@ -138,7 +140,8 @@ app.post('/userMessage', async (req, res) => {
       role: 'user',
       username: username,
       server: server,
-      content: `timestamp: ${currentDate()} ${currentTimeOnly()}, message: ${messageContent}`
+      timestamp: `${currentDate()} ${currentTimeOnly()}`,
+      content: `name : ${username}, timestamp: ${currentDate()} ${currentTimeOnly()}, message: ${messageContent}`
     });
 
     if (webResults) {
@@ -183,7 +186,7 @@ async function generateResponses(messageBatches, userMessageHistory, assistantMe
 
   for (const batch of messageBatches) {
 
-    const systemMessage = `Your creator is standing in front of you at the moment. It's currently ${currentTimeOnly()}, and today's date is ${currentDate()}, formatted as DD/MM/YYYY.`;
+    const systemMessage = `Your creator ${username} is standing in front of you at the moment. It's currently ${currentTimeOnly()}, and today's date is ${currentDate()}, formatted as DD/MM/YYYY.`;
 
     const combinedMessages = [...userMessageHistory, ...assistantMessageHistory, { role: 'user', content: batch }];
 
