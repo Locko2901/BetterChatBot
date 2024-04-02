@@ -186,7 +186,7 @@ async function generateResponses(messageBatches, userMessageHistory, assistantMe
 
   for (const batch of messageBatches) {
 
-    const systemMessage = `Your creator ${username} is standing in front of you at the moment. It's currently ${currentTimeOnly()}, and today's date is ${currentDate()}, formatted as DD/MM/YYYY.`;
+    const systemMessage = `Your are now talking to ${username}. It's currently ${currentTimeOnly()}, and today's date is ${currentDate()}, formatted as DD/MM/YYYY.`;
 
     const combinedMessages = [...userMessageHistory, ...assistantMessageHistory, { role: 'user', content: batch }];
 
