@@ -111,7 +111,7 @@ app.post('/userMessage', async (req, res) => {
     console.log('Web Results:', webResults);
   }
 
-  const messageBatches = splitLongMessages(messageContent + (webResults ? ("\nWeb Results: " + webResults) : ""));
+  const messageBatches = splitLongMessages(messageContent);
 
   const personalityPromptTokens = countTokens([{ content: userPrompt }]);
 
@@ -155,7 +155,7 @@ app.post('/userMessage', async (req, res) => {
 
   eventEmitter.emit('userMessage', { userAttribution: 'user', userQuery: messageContent });
 
-  const chatbotResponses = await generateResponses(messageBatches, userMessageHistory, assistantMessageHistory);
+  const chatbotResponses = await generateResponses(messageBatches, userMessageHistory, assistantMessageHistory, webResults);
 
   chatbotResponses.forEach((response) => {
     const responseTokens = countTokens([{ content: response }]);
@@ -181,12 +181,16 @@ app.post('/userMessage', async (req, res) => {
   res.json({ message: 'Message received by the server.', chatbotResponse: chatbotResponses });
 });
 
-async function generateResponses(messageBatches, userMessageHistory, assistantMessageHistory) {
+async function generateResponses(messageBatches, userMessageHistory, assistantMessageHistory, webResults) {
   const responses = [];
 
   for (const batch of messageBatches) {
 
     const systemMessage = `Your are now talking to ${username}. It's currently ${currentTimeOnly()}, and today's date is ${currentDate()}, formatted as DD/MM/YYYY.`;
+
+    if (webResults && webResults.trim().length > 0) {
+      systemMessage += `\n\nCurrent Web Results:\n${webResults}`;
+    }
 
     const combinedMessages = [...userMessageHistory, ...assistantMessageHistory, { role: 'user', content: batch }];
 

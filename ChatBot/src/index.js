@@ -119,7 +119,7 @@ app.post('/userMessage', async (req, res) => {
   }
 
   // Prepare the message batch, including the potential web search result.
-  const messageBatches = splitLongMessages(messageContent + (webResults ? ("\nWeb Results: " + webResults) : ""));
+  const messageBatches = splitLongMessages(messageContent);
 
   const personalityPromptTokens = countTokens([{ content: userPrompt }]);
 
@@ -163,7 +163,7 @@ app.post('/userMessage', async (req, res) => {
 
   eventEmitter.emit('userMessage', { userAttribution: 'user', userQuery: messageContent });
 
-  const chatbotResponses = await generateResponses(messageBatches, userMessageHistory, assistantMessageHistory);
+  const chatbotResponses = await generateResponses(messageBatches, userMessageHistory, assistantMessageHistory, webResults);
 
   chatbotResponses.forEach((response) => {
     const responseTokens = countTokens([{ content: response }]);
@@ -189,17 +189,20 @@ app.post('/userMessage', async (req, res) => {
   res.json({ message: 'Message received by the server.', chatbotResponse: chatbotResponses });
 });
 
-async function generateResponses(messageBatches, userMessageHistory, assistantMessageHistory) {
+async function generateResponses(messageBatches, userMessageHistory, assistantMessageHistory, webResults) {
   const responses = [];
 
   for (const batch of messageBatches) {
 
     const systemMessage = `Your are now talking to ${username}. It's currently ${currentTimeOnly()}, and today's date is ${currentDate()}, formatted as DD/MM/YYYY.`; // Edit as you please; Time function might be useful.
 
-    // Combine user and assistant history, then add the current batch message.
+    // Append the current web results directly to the system message, if available. Uses slightly more tokens, can however be commented out, only left in here for clarification (for the bot).
+    if (webResults && webResults.trim().length > 0) {
+      systemMessage += `\n\nCurrent Web Results:\n${webResults}`;
+    }
+
     const combinedMessages = [...userMessageHistory, ...assistantMessageHistory, { role: 'user', content: batch }];
 
-    // Filter out unrecognized properties before API call, only include 'role' and 'content'.
     const filteredMessages = combinedMessages.map(({ role, content }) => ({ role, content }));
 
     // Prepare additional system message. Don't touch, borks easily!!
