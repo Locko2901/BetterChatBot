@@ -1,9 +1,10 @@
+const { DateTime } = require('luxon');
 const fs = require('fs');
 const path = require('path');
 
 function loadConfig() {
     try {
-        const configPath = path.join(__dirname, '../../../config.json');
+        const configPath = path.join(__dirname, '..', '..', '..', 'config.json');
         const rawData = fs.readFileSync(configPath, 'utf-8');
         const config = JSON.parse(rawData);
         return config;
@@ -39,6 +40,7 @@ function currentTime(format = 'full') {
                 formattedDateTime = now.toFormat('dd/LL/yyyy');
                 break;
             case 'time':
+
                 formattedDateTime = now.toFormat('HH:mm:ss');
                 break;
             default:
