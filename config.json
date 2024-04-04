@@ -2,8 +2,8 @@
   "token": "your_bot_token",
   "clientId": "your_bot_id",
   "guildId": "your_dev_server_id(only needed if you want to deploy commands)",
+  "yourUserId": "your_user_id",
   "key": "your_openai_key",
-  "userId": "your_user_id(in case you need it later)",
   "ppkey": "your_perplexityai_key",
   "timezone": "your_timezone",
   "timezoneExample": "Europe/Berlin"

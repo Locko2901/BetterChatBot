@@ -1,13 +1,9 @@
-const { Client, GatewayIntentBits, Collection, Events } = require('discord.js');
+const { Client, GatewayIntentBits } = require('discord.js');
 const axios = require('axios');
 const EventEmitter = require('events');
 
-const fs = require('node:fs');
-const path = require('node:path');
-
 const evaluateMessageForWebSearch = require('../../ChatBot/src/modules/evaluateMessageForWebSearch');
 const { token } = require('../../config.json');
-const { allowedChannels } = require('./data/channels.json');
 
 const client = new Client({
     intents: [
@@ -85,22 +81,15 @@ client.on('messageCreate', async (message) => {
 
         const messageContent = `${message.member.displayName}:${message.content}`;
 
-        const serverId = message.guild.id;
-        const channelId = message.channel.id;
+        const data = {
+            userQuery: messageContent,
+            server: message.guild.name,
+        };
 
-        if (allowedChannels.hasOwnProperty(serverId) && allowedChannels[serverId].includes(channelId)) {
-            const data = {
-                userQuery: messageContent,
-                server: message.guild.name,
-            };
+        messageQueue.push({ message, data });
 
-            messageQueue.push({ message, data });
-
-            if (!isProcessing) {
-                processNextMessage();
-            }
-        } else {
-            //await message.reply('');
+        if (!isProcessing) {
+            processNextMessage();
         }
     }
 });
