@@ -58,10 +58,20 @@ Upon cloning the repository, you will find the following structure:
 │   ├── package-lock.json
 │   └── src
 │       ├── commands
+│       │   ├── app
+│       │   │   ├── authorize.js
+│       │   │   ├── reset.js
+│       │   │   ├── set.js
+│       │   │   └── unauthorize.js
 │       │   └── fun
 │       │       └── imagine.js
+│       ├── data
+│       │   ├── authorizedUsers.json
+│       │   └── channels.json
 │       ├── deploy-commands.js
-│       └── index.js
+│       ├── index.js
+│       └── index.js.alt
+├── LICENSE
 └── README.md
 ```
 
@@ -347,6 +357,7 @@ The structure should be as follows:
   "token": "your_bot_token",
   "clientId": "your_bot_id",
   "guildId": "your_dev_server_id",
+  "yourUserId": "your_user_id",
   "key": "your_openai_key",
   "ppkey": "your_perplexityai_key"
   "timezone": "your_timezone(eg. Europe/Berlin)",
