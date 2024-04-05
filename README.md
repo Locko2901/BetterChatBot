@@ -63,6 +63,8 @@ Upon cloning the repository, you will find the following structure:
 │       │   │   ├── reset.js
 │       │   │   ├── set.js
 │       │   │   └── unauthorize.js
+│       │   ├── chat
+│       │   │   └── forget.js
 │       │   └── fun
 │       │       └── imagine.js
 │       ├── data
@@ -448,11 +450,11 @@ To reverse this permission and prevent the bot from further communicating in the
 
 It's important to note that this setting only affects the bot's chat communication. Commands issued to the bot will still be processed in channels where the bot is a member, even if chat communications are disabled through `/cb-set` and `/cb-reset` commands.
 
-When the bot begins to act unpredictably or if it starts generating responses based on unintended inputs—perhaps because a user fed it unrelated or nonsensical information—the `/forget` command can come in handy. This command serves to reset the bot's state, clearing any temporary data or context that might be influencing its behavior. It's a useful tool for restoring the bot to a more expected operational state without affecting its overall settings or permissions.
-
 In cases where you want to grant other users the ability to authorize or deauthorize the bot's communication in channels, you can utilize the `/cb-authorize` and `/cb-unauthorize` commands accordingly. These commands allow you to manage which users have the authority to set or reset the bot's communication capabilities within channels.
 
-Remember, these commands provide vital control over the bot's interaction within your workspace, so use them judiciously to maintain the desired level of engagement and security. 
+When the bot begins to act unpredictably or if it starts generating responses based on unintended inputs—perhaps because a user fed it unrelated or nonsensical information—the `/forget` command can come in handy. This command serves to reset the bot's state, clearing any temporary data or context that might be influencing its behavior. It's a useful tool for restoring the bot to a more expected operational state without affecting its overall settings or permissions.
+
+Remember, these commands provide vital control over the bot's interaction within your workspace, ensuring that chat messages are allowed only in channels where they are expressly permitted, while still allowing command processing across all channels the bot is part of. Use them judiciously to maintain the desired level of engagement and operational consistency.
 
 ## Running Bots with PM2 (Optional)
 
