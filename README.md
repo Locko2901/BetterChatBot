@@ -77,6 +77,17 @@ Upon cloning the repository, you will find the following structure:
 └── README.md
 ```
 
+## Installation Methods
+
+There are several ways to install the bot, depending on your preference for simplicity and control over the setup process:
+
+1. **Automatic Installation with the Installer Script**: This method is the simplest and involves using the `installer.sh` script provided in the latest release. It automates initial setup and dependency installation, suitable for users looking for a quick start.
+   - Find the installer in the `Setup.zip` asset from the [Releases page](https://github.com/Locko2901/BetterChatBot/releases).
+
+2. **Manual Installation (With Discord `/commands`)**: For users who opt to manually install the bot and wish to incorporate Discord `/commands`, this method involves a bit more setup. Detailed instructions can be found in the Manual Setup section of the readme.
+
+3. **Manual Installation (Without Discord `/commands`)**: If you prefer a manual installation process and do not want to use Discord `/commands`, this method is also available. It involves manually configuring the bot without setting up `/commands`. Instructions are also provided in the Manual Setup section of the readme.
+
 ## Simplified Setup Using the Install Script
 
 For users looking for a quicker setup experience, a new release now includes an `installer.sh` script. This script is part of the Basic Setup and automates the initial configuration and dependency installations, significantly cutting down the setup time and making the process more user-friendly. Please note that the Basic Setup does not include command setup.
