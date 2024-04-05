@@ -425,7 +425,7 @@ Marked as `TODO`.
 
 ## Enabling Commands in ExampleBot
 
-#### If you don't want commands you can use the ìndex.js.alt` file and skip this part.
+#### If you don't want commands you can use the `index.js.alt` file and skip this part.
 
 Enable command handling by uncommenting sections in `index.js` and `deploy-commands.js` and follow the guided instructions after `// TODO`:
 
