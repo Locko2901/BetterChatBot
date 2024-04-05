@@ -139,13 +139,13 @@ async function processNextMessage() {
                 if (serverResponse.trim() !== '') {
                     const responseParts = splitLongMessage(serverResponse);
                     for (const part of responseParts) {
-                        await message.channel.send(part);
+                        await message.reply(part);
                     }
                 }
             }
         } catch (error) {
             console.error('Error sending/receiving messages:', error.message);
-            await message.channel.send('An error occurred while communicating with the server.');
+            await message.reply('An error occurred while communicating with the server.');
         } finally {
             isProcessing = false;
             processNextMessage();
