@@ -1,5 +1,5 @@
 # BetterChatBot
-A revised version of my ChatBot, integrating the capabilities of the GPT-4-Turbo Preview and Perplexity AI. It also includes an easy command setup, along with an example command already configured.
+A revised version of my ChatBot, integrating the capabilities of the GPT-4-Turbo Preview and Perplexity AI. It also includes an easy command setup, along with a few commands already configured.
 
 # Bot Setup Guide
 
@@ -389,7 +389,7 @@ Remember to save and exit the editor upon completion.
 19. `Europe/Moscow` - Moscow Standard Time (MSK)
 20. `Europe/Paris` - Central European Time (CET)/Central European Summer Time (CEST)
 
-## Personalization (Optional)
+## Personalization
 
 Customize your bot to suit your preferences:
 
@@ -421,7 +421,9 @@ Look for the line:
 
 Marked as `TODO`.
 
-## Enabling Commands in ExampleBot (Optional)
+## Enabling Commands in ExampleBot
+
+#### If you don't want commands you can use the ìndex.js.alt` file and skip this part.
 
 Enable command handling by uncommenting sections in `index.js` and `deploy-commands.js` and follow the guided instructions after `// TODO`:
 
@@ -437,6 +439,18 @@ Deploy the commands with:
 ```shell
 node ExampleBot/src/deploy-commands.js
 ```
+
+#### Controlling Bot Communication in Channels
+
+By default, the bot is not allowed to communicate in any channel. To enable communication, you must explicitly authorize the bot for your desired channel. This is achieved through the use of the `/cb-set` command. Executing this command will allow the bot to begin interacting within the channel. 
+
+To reverse this permission and prevent the bot from further communicating in the channel, you can use the `/cb-reset` command. This will disable the bot's ability to interact within that specific channel.
+
+It's important to note that this setting only affects the bot's chat communication. Commands issued to the bot will still be processed in channels where the bot is a member, even if chat communications are disabled through `/cb-set` and `/cb-reset` commands.
+
+In cases where you want to grant other users the ability to authorize or deauthorize the bot's communication in channels, you can utilize the `/cb-authorize` and `/cb-unauthorize` commands accordingly. These commands allow you to manage which users have the authority to set or reset the bot's communication capabilities within channels.
+
+Remember, these commands provide vital control over the bot's interaction within your workspace, so use them judiciously to maintain the desired level of engagement and security. 
 
 ## Running Bots with PM2 (Optional)
 
