@@ -13,7 +13,7 @@ Upon cloning the repository, you will find the following structure:
 
 ```shell
 .
-├── BasicSetup
+├── [BasicSetup](https://github.com/Locko2901/BetterChatBot/tree/main/BasicSetup/BetterChatBot)
 │   └── BetterChatBot
 │       ├── ChatBot
 │       │   ├── package.json
