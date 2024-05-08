@@ -6,7 +6,7 @@ const perplexityAPIKey = ppkey;
 async function performSearchWithSonarMediumOnline(userMessage) {
   try {
     const response = await axios.post('https://api.perplexity.ai/chat/completions', {
-      model: "sonar-medium-online",
+      model: "llama-3-sonar-large-32k-online",
       messages: [
         {
           role: "user",
