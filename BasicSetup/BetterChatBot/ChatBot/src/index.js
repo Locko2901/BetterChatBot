@@ -200,7 +200,7 @@ async function generateResponses(messageBatches, userMessageHistory, assistantMe
 
     try {
       const response = await openai.chat.completions.create({
-        model: 'gpt-4-1106-preview',
+        model: 'gpt-4o',
         messages: filteredMessages.concat([{ role: 'system', content: userPrompt + "\n\n" + systemMessageContent + "\n\n" + systemMessage }]),
         temperature: 0.7,
         max_tokens: 750,

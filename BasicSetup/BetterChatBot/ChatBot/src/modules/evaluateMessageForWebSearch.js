@@ -8,7 +8,7 @@ const openai = new OpenAI({ apiKey: openaiAPIKey });
 async function evaluateMessageForWebSearch(userMessage) {
   try {
     const response = await openai.chat.completions.create({
-      model: 'gpt-4', // Using GPT-4 for analysis
+      model: 'gpt-4o', // Using GPT-4o for analysis
       messages: [
         {
           role: "user",
