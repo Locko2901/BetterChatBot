@@ -1,5 +1,5 @@
 # BetterChatBot
-A revised version of my ChatBot, integrating the capabilities of the GPT-4-Turbo Preview and Perplexity AI. It also includes an easy command setup, along with a few commands already configured.
+A revised version of my ChatBot, integrating the capabilities of the GPT-4o and llama-3-sonar-large-32k-online. It also includes an easy command setup, along with a few commands already configured.
 
 # Bot Setup Guide
 
