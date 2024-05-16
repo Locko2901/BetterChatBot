@@ -503,8 +503,14 @@ PM2 is a robust Node.js process manager to increase bot uptime:
    ```shell
    npm install pm2 -g
    ```
+   
+3. **Creating the Logs Directory**
 
-3. **Launching the Bots**
+   ```shell
+   sudo mkdir -p /logs && sudo chown $USER:$USER /logs && sudo chmod 777 /logs && ls -ld /logs
+   ```
+
+4. **Launching the Bots**
 
    Start the bots using PM2:
 
