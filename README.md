@@ -545,7 +545,7 @@ Attaching a custom domain to your server hosting the bot not only enhances the p
 2. **Point Your Domain to Your Server**: Update the DNS records at your domain registrar to point to your server's IP address.
 3. **Set Up SSL for Secure Communication**:
    - Install Certbot on your server (for Let's Encrypt free SSL certificates).
-   - Run `certbot --apache` or `certbot --nginx` depending on your server setup.
+   - Run `certbot --standalone`.
    - Follow the interactive prompt to select your domain and finalize the SSL setup.
    - Ensure your server is configured to redirect HTTP traffic to HTTPS.
 
